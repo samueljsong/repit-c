@@ -3,16 +3,14 @@ import '../styles/Tutorial1.css'
 
 //Dependencies
 import {motion} from 'framer-motion'
-import {useNavigate} from "react-router-dom"
 
 //Images
 import post from '../assets/post.svg'
 
-export const Tutorial3 = () => {
-    const navigate = useNavigate()
+export const Tutorial3 = ({next}) => {
 
-    const onStartClickHandler = () => {
-        navigate('/')
+    const onNextClickHandler= () => {
+        next(4)
     }
 
     return(
@@ -28,14 +26,14 @@ export const Tutorial3 = () => {
                 <p>Once ready you can REPIT</p>
                 <p>BCIT will fix it soon!</p>
             </div>
-            <motion.button className='t1-btn' onClick={onStartClickHandler}
+            <motion.button className='t1-btn' onClick={onNextClickHandler}
             whileHover={{
                 size: 1.2
             }}
             whileTap={{
                 scale: 0.9
             }}>
-                <p className='t1-btn-next'>Start</p>
+                <p className='t1-btn-next'>Next</p>
             </motion.button>
         </motion.div>
     )
