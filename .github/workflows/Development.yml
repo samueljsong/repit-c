@@ -1,0 +1,49 @@
+name: Development
+
+on:
+  push:
+    branches: dev
+
+jobs:
+  cypress:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.10.0
+
+      - name: 'install npm@latest'
+        run: npm i -g npm@latest
+
+      - name: Install Dependencies
+        run: npm install
+(Unit + Integration)
+
+  test:
+    needs: cypress
+    runs-on: ubuntu-latest
+    env:
+      CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}
+      CYPRESS_REGULAR_EMAIL: ${{ secrets.REGULAR_EMAIL }}
+      CYPRESS_REGULAR_PASSWORD: ${{ secrets.CYPRESS_REGULAR_PASSWORD }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 21.6.0
+
+      - name: 'install npm@latest'
+        run: npm i -g npm@latest
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Test (E2E)
+        run: npm run cypress:test
