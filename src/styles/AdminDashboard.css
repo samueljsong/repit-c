@@ -1,0 +1,41 @@
+.main-div {
+    margin: 20px;
+  }
+  
+  .dashboard-div {
+    border: 1px solid #ccc;
+    padding: 20px;
+  }
+  
+  h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+  }
+  
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 5px;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+  }
+  
+  /* Style for selected item */
+  li:hover {
+    background-color: #f0f0f0;
+  }
+  

@@ -1,0 +1,40 @@
+@media only screen and (max-width: 600px){
+
+    .t1-container{
+        height: auto;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+    .t1-img{
+        width: 90%;
+        height: 10rem;
+    }
+
+    .t1-title{
+        font-weight: bold;
+        font-size: 4vw;
+        color: #043c6c;
+    }
+
+    .t1-instructions{
+        display:grid;
+        justify-items: center;
+        color: #043c6c;
+        font-size: 3vw;
+    }
+
+    .t1-btn{
+        width: 7rem;
+        height: 2.5rem;
+        background-color: #043c6c;
+        border-radius: 10px;
+        color: white;
+        font-weight: bold;
+        font-size: 0.7rem;
+    }
+}
