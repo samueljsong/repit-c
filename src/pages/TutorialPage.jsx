@@ -5,6 +5,7 @@ import '../styles/TutorialPage.css'
 import { Tutorial1 } from '../components/Tutorial1'
 import { Tutorial2 } from '../components/Tutorial2'
 import { Tutorial3 } from '../components/Tutorial3'
+import { Warning } from '../components/Warning'
 
 //Dependencies
 import {motion, AnimatePresence} from "framer-motion"
@@ -32,7 +33,12 @@ export const TutorialPage = () => {
 
                 {
                     step == 3 ?
-                    <Tutorial3/> : <></>
+                    <Tutorial3 next={onClickNextHandler}/> : <></>
+                }
+
+                {
+                    step == 4 ?
+                    <Warning/> : <></>
                 }
                 <motion.div className='tp-stage'
                 initial={{opacity: 0, y:20}} 

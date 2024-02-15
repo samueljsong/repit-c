@@ -19,14 +19,14 @@ export const HomePage = () => {
 
     function RepitCreateCard() {
       return (
-        <div className='flex flex-col w-56 h-56 border-2 rounded-2xl justify-center items-center text-white font-bold font-inter my-2 bg-ui-background shadow-sm'>
+        <div className='flex flex-col w-64 h-64 border-2 rounded-2xl justify-center items-center text-white font-bold font-inter my-2 bg-ui-background shadow-sm'>
           <div className='mx-6'>
               <img src={createIcon}/>
           </div>
 
-            <button name='create' onClick={CreateReportHandler} className='bg-bcit-blue flex items-center rounded-md shadow-2xl mt-2 w-5/6 h-7 font-inter-thin text-xs hover:bg-red-400'>
+            <button name='create' onClick={CreateReportHandler} className='bg-bcit-blue flex items-center rounded-md shadow-2xl mt-2 w-5/6 h-7 font-inter-thin text-xs'>
                 <img className='w-6 ml-1' src={addSquare}/>
-                <div className='pl-12'>
+                <div className='pl-16'>
                     REPIT
                 </div>
             </button>
@@ -36,13 +36,13 @@ export const HomePage = () => {
 
     function ViewReportCard() {
         return (
-            <div className='flex flex-col w-56 h-56 border-2 rounded-2xl justify-center items-center text-white font-inter-thin my-2 bg-ui-background shadow-sm'>
+            <div className='flex flex-col w-64 h-64 border-2 rounded-2xl justify-center items-center text-white font-inter-thin my-2 bg-ui-background shadow-sm'>
                 <div className='mx-6'>
                     <img src={viewIcon}/>
                 </div>
                 <button name='view' onClick={ViewReportHandler} className='bg-bcit-blue flex items-center rounded-md shadow-2xl mt-2 w-5/6 h-7 font-inter-thin text-xs'>
                     <img className='w-5 ml-2' src={viewSquare}/>
-                    <div className=' pl-5'>
+                    <div className='pl-8'>
                         VIEW MY POSTS
                     </div>
                 </button>
@@ -50,9 +50,7 @@ export const HomePage = () => {
           )
     }
 
-
     return (
-    
       <div className=''>
           <div className='flex flex-col items-center w-screen h-screen pt-20 bg-background'>
              <RepitCreateCard/>
