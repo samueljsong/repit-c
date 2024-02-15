@@ -7,7 +7,7 @@ import mail from '../assets/icons/mail.png'
 import lock from '../assets/icons/lock.png'
 
 //Dependencies
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
