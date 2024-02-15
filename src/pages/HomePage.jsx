@@ -19,12 +19,12 @@ export const HomePage = () => {
 
     function RepitCreateCard() {
       return (
-        <div name='create' onClick={CreateReportHandler} className='flex flex-col w-56 h-56 border-2 rounded-2xl justify-center items-center text-white font-bold font-inter my-2 bg-ui-background shadow-sm'>
+        <div name='create' onClick={CreateReportHandler} className='flex flex-col w-56 h-56 border-2 rounded-2xl justify-center items-center text-white font-bold font-inter my-2 bg-ui-background shadow-sm hover:cursor-pointer'>
           <div className='mx-6'>
               <img src={createIcon}/>
           </div>
 
-            <button className='bg-bcit-blue flex items-center rounded-md shadow-2xl mt-2 w-5/6 h-7 font-inter-thin text-xs hover:bg-red-400'>
+            <button className='bg-bcit-blue flex items-center rounded-md shadow-2xl mt-2 w-5/6 h-7 font-inter-thin text-xs'>
                 <img className='w-6 ml-1' src={addSquare}/>
                 <div className='pl-12'>
                     REPIT
@@ -36,7 +36,7 @@ export const HomePage = () => {
 
     function ViewReportCard() {
         return (
-            <div name='view' onClick={ViewReportHandler} className='flex flex-col w-56 h-56 border-2 rounded-2xl justify-center items-center text-white font-inter-thin my-2 bg-ui-background shadow-sm'>
+            <div name='view' onClick={ViewReportHandler} className='flex flex-col w-56 h-56 border-2 rounded-2xl justify-center items-center text-white font-inter-thin my-2 bg-ui-background shadow-sm hover:cursor-pointer'>
                 <div className='mx-6'>
                     <img src={viewIcon}/>
                 </div>
