@@ -5,9 +5,17 @@ import addSquare from '../assets/icons/hp-add-square.svg'
 import viewIcon from '../assets/icons/hp-view.png'
 import viewSquare from '../assets/icons/hp-view-icon.svg'
 
+//API
+import { loggedIn } from '../api/Client'
+
 
 // Testing
 export const HomePage = () => {
+    
+    useEffect(() => {
+        loggedIn(navigate)
+    },[])
+
     const navigate = useNavigate();
     function CreateReportHandler() {
       navigate('/create')
