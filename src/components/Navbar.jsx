@@ -23,7 +23,7 @@ export default function Navbar() {
           R E P I T
         </div>
       </a>
-        <div className='flex items-center hover:cursor-pointer' onClick={onLogoutClick}>
+        <div name="logout" className='flex items-center hover:cursor-pointer' onClick={onLogoutClick}>
           <div className='flex flex-col w-8 h-8 rounded-md bg-bcit-blue text-white justify-center items-center text-sm'>
               SS {/* Put user initials here*/}
           </div>
