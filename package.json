@@ -9,7 +9,8 @@
     "test": "npx jest",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "cypress:test": "cypress run --browser chrome"
+    "cypress:e2e": "cypress run --e2e --browser chrome",
+    "cypress:component": "cypress run --component --browser chrome"
   },
   "dependencies": {
     "axios": "^1.6.7",

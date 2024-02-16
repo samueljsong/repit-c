@@ -20,13 +20,13 @@ export const Tutorial1 = ({next}) => {
         transition={{duration: "0.5", delay: 0.25}}
         exit={{opacity: 0}}>
             <img className='t1-img' src={location} alt="" />
-            <h1 className='t1-title'>Discover something broken?</h1>
+            <h1 name="title" className='t1-title'>Discover something broken?</h1>
             <div className='t1-instructions'>
                 <p>If you discover something broken,</p>
                 <p>help BCIT by reporting it.</p>
                 <p>It can be anything.</p>
             </div>
-            <motion.button className='t1-btn' onClick={onNextClickHandler}
+            <motion.button name="next" className='t1-btn' onClick={onNextClickHandler}
             whileHover={{
                 size: 1.2
             }}

@@ -27,7 +27,7 @@ export const AdminDashboard = () => {
   return (
     <div className="main-div">
       <div className="dashboard-div">
-        <h2 className="dashboard-title">List of All Users</h2>
+        <h2 name="title" className="dashboard-title">List of All Users</h2>
         <input
           type="text"
           placeholder="Search by email"

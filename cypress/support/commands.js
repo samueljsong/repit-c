@@ -23,3 +23,21 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+const base_url = Cypress.env("CYPRESS_BASE_URL")
+const api_url = Cypress.env("CYPRESS_API_URL")
+
+Cypress.Commands.add('login', (email, password) => {
+
+    cy.visit(base_url + '/login');
+
+    cy.get('input[name="email"]').type(email);
+    cy.get('input[name="password"]').type(password);
+
+    cy.get('button.lp-button').click();
+
+    cy.url().should('eq', base_url + '/');
+
+    cy.request(api_url + '/api/auth/me').then((response) => {
+        expect(response.status).to.eq(200);
+    });
+  })

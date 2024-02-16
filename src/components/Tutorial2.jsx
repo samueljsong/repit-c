@@ -19,13 +19,13 @@ export const Tutorial2 = ({next}) => {
         animate={{opacity: 1, y: 0}} 
         transition={{duration: "0.5", delay: 0.25}}>
             <img className='t1-img' src={check} alt="" />
-            <h1 className='t1-title'>Help us understand better!</h1>
+            <h1 name="title" className='t1-title'>Help us understand better!</h1>
             <div className='t1-instructions'>
                 <p>Create a new report to send to BCIT</p>
                 <p>Fill in important details</p>
                 <p>And add photos!</p>
             </div>
-            <motion.button className='t1-btn' onClick={onNextClickHandler}
+            <motion.button name="next" className='t1-btn' onClick={onNextClickHandler}
             whileHover={{
                 size: 1.2
             }}

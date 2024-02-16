@@ -24,13 +24,13 @@ export const Warning = () => {
         transition={{duration: "0.5", delay: 0.25}}
         exit={{opacity: 0}}>
             <img className='t1-img' src={photos} alt="" />
-            <h1 className='t1-title warning-red'>WARNING!!!</h1>
+            <h1 name="title" className='t1-title warning-red'>WARNING!!!</h1>
             <div className='t1-instructions'>
                 <p>Do not take pictures in the washrooms</p>
                 <p>Do not take pictures in the changerooms</p>
                 <p>Please respect everyone's privacy.</p>
             </div>
-            <motion.button className='t1-btn' onClick={onStartClickHandler}
+            <motion.button name="complete" className='t1-btn' onClick={onStartClickHandler}
             whileHover={{
                 size: 1.2
             }}

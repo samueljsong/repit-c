@@ -45,4 +45,7 @@ jobs:
         run: npm install
 
       - name: Test (E2E)
-        run: npm run cypress:test
+        run: npm run cypress:E2E
+
+      - name: Test (Components)
+        run: npm run cypress:component
