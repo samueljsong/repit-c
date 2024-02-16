@@ -10,8 +10,20 @@ import { Warning } from '../components/Warning'
 //Dependencies
 import {motion, AnimatePresence} from "framer-motion"
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
+
+//Api
+import { loggedIn } from '../api/Client'
 
 export const TutorialPage = () => {
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        loggedIn(navigate)
+    }, [])
+
     const [step, setStep] = useState([1])
 
     const onClickNextHandler = (stage) => {
