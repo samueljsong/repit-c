@@ -1,9 +1,10 @@
 import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
+
 import Navbar from '../../src/components/Navbar'
 
 describe('<Navbar />', () => {
   it('renders', () => {
-    // see: https://on.cypress.io/mounting-react
-    cy.mount(<Navbar />)
+    cy.mount(<BrowserRouter><Navbar/></BrowserRouter>)
   })
 })

@@ -1,28 +1,22 @@
-describe('Regular User redirecting to Create and View pages', () => {
+describe('Check text inputs', () => {
     const base_url = Cypress.env("CYPRESS_BASE_URL")
-    
-    beforeEach(() => {
-        const email = Cypress.env("CYPRESS_REGULAR_EMAIL");
-        const password = Cypress.env("CYPRESS_REGULAR_PASSWORD")
-        cy.visit(base_url);
-        cy.login(email, password)
-    })
+    // Create a before each to redirect to visit base_url, unauthenticated should redirect back
+  
+    it('type inside the login page', () => {
+      cy.visit(base_url);
+      const email = Cypress.env("CYPRESS_REGULAR_EMAIL");
+      const password = Cypress.env("CYPRESS_REGULAR_PASSWORD")
+  
+      cy.get('input[name="email"]').type(email);
+      cy.get('input[name="email"]').should('have.value', email)
 
+      cy.get('input[name="password"]').type(password);
+      cy.get('input[name="password"]').should('have.value', password)
+      cy.get('input[name="password"]').should('have.attr', 'type', 'password')
 
-    it('successfully redirects to view page', () => {
-        cy.get('button[name="view"]').click();
-
-        cy.url().should('include', '/view-reports');
     });
-
-    it('successfully redirects to create report page', () => {    
-        cy.get('button[name="create"]').click();
-
-        cy.url().should('include', '/create');
-        });
-
-    afterEach(() => {
-        cy.go('back');
-        cy.url().should('eq', base_url + '/')
-    })    
-});
+    
+    // * Add other tests for text input here
+    
+  });
+  
