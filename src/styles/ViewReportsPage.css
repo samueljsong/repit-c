@@ -1,0 +1,66 @@
+.main-content-holder {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px 0;
+
+}
+.new-repit-submit-div {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.new-repit-submit-btn {
+    background-color: #043c6c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.new-repit-submit-btn:hover {
+    background-color: #043c6c;
+}
+
+.swtich-content-buttons-div {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.switch-content-btn {
+    background-color: #fff;
+    border: 1px solid #ccc; 
+    border-bottom: none; 
+    padding: 10px 20px;
+    border-radius: 5px 5px 0 0; 
+    cursor: pointer;
+    margin: 0;
+    width: 50%;
+}
+
+
+.switch-content-btn:hover {
+    background-color: #043c6c;
+    color: #fff;
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+}
+
+.Active-div,
+.History-div {
+    display: none;
+}
+
+.Active-div {
+    display: block;
+}
+
+.History-div {
+    display: block;
+}
