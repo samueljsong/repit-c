@@ -1,0 +1,131 @@
+.report {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 10px;
+    box-shadow: #ccc 0px 0px 2px;
+}
+
+.report-top {
+    display: flex;
+    justify-content: space-between;
+    background-color: #043c6c;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+
+}
+
+.report-date {
+    margin-left: 40px;
+}
+
+.report-bottom {
+    margin-top: 10px;
+    display: flex;
+    padding: 10px;
+
+}
+
+.report-bottom-left {
+    flex-grow: 1;
+}
+
+.report-bottom-right {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-left: 10px;
+}
+
+.report-bottom img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.report-title {
+    font-weight: bold;
+    margin-bottom: 10px; 
+}
+
+.description {
+    margin-top: 5vh;
+    font-size: 10px;
+    max-width: 200px; 
+}
+
+
+.report-image {
+    width: 100px;
+    height: auto;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.dot-unread {
+    background-color: #ffcc00;
+}
+
+.dot-resolved {
+    background-color: #00cc00;
+}
+
+.dot-rejected {
+    background-color: #cc0000;
+}
+
+.dot-in-progress {
+    background-color: #0066cc;
+}
+
+.dot-default {
+    background-color: #808080;
+}
+
+.popup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: #fefefe;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    margin: 10px 10px 10px 10px;
+}
+
+.popup-description-content{
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+.popup-description {
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 1px;
+    right: 10px; 
+    cursor: pointer;
+    font-size: 35px;
+}
+
+.close:hover {
+    color: #aaa;
+}

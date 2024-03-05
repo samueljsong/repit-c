@@ -2,6 +2,10 @@
     width: 90%;
     margin: 0 auto;
     padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 80px);
+    overflow: hidden;
 }
 
 .new-repit-submit-div {
@@ -18,6 +22,7 @@
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    width: 80%;
 }
 
 .new-repit-submit-btn:hover {
@@ -53,10 +58,11 @@
 }
 
 .main-content {
-    flex-grow: 1; /* Take up the remaining space */
+    flex-grow: 1; 
     display: flex;
     justify-content: center;
-    box-shadow: #ccc 0px 0px 10px;
+    box-shadow: #ccc 0px 0px 5px;
+    overflow-y: auto;
 }
 
 .Active-div,
