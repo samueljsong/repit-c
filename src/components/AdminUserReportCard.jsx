@@ -3,6 +3,9 @@ import '../App.css';
 
 
 export const AdminUserReportCard = () => {
+    const [open, setOpen] = React.useState(false);
+ 
+    const handleOpen = () => setOpen(!open);
 
     const states = ["green", "yellow", "red", "orange"]
     const [option, setOption] = useState(states[2])
@@ -46,7 +49,27 @@ export const AdminUserReportCard = () => {
                                 </form>
                             </div>
                             <div className='flex justify-center items-center flex-1'>
-                                <a href="#" className='font-normal text-blue-500 underline decoration-solid hover:text-blue-700'>Image</a>
+                                {/* <a href="#" className='font-normal text-blue-500 underline decoration-solid hover:text-blue-700'>Image</a> */}
+                                <button onClick={handleOpen} variant="gradient" className='font-normal text-blue-500 underline decoration-solid hover:text-blue-700'>
+                                    Image
+                                </button>
+                                <dialog open={open} handler={handleOpen} className=''>
+                                    <dialogheader>
+                                        <h1 className='font-bold'>Image</h1>
+                                    </dialogheader>
+
+                                    <dialogbody>
+                                        <div className='bg-[#D9D9D9] w-[340px] h-[484px]'>
+                                            
+                                        </div>
+                                    </dialogbody>
+
+                                    <dialogfooter>
+                                        <button variant="gradient" color="green" onClick={handleOpen}>
+                                            <span>Confirm</span>
+                                        </button>
+                                    </dialogfooter>
+                                </dialog>
                             </div>
                         </div>
                         <div className='mb-1'>
