@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
 //API
-import { loggedIn } from '../api/Client'
+import { client, loggedIn, me } from '../api/Client'
 
 
 export default function ViewReportsPage() {
@@ -17,26 +17,17 @@ export default function ViewReportsPage() {
   const [activeReports, setActiveReports] = useState([]);
   const [historyReports, setHistoryReports] = useState([]);
 
-  const fakeActiveReports = [
-    { id: 1, title: 'Active Report 1', description: 'Description of active report 1 Description of active report 1 Description of active report 1 Description of active report 1 Description of active report 1', date_submitted: '2024-03-04', location: 'Room 101, Building A', status: 'unread', report_image: winstonImage},
-    { id: 2, title: 'Active Report 2', description: 'Description of active report 2', date_submitted: '2024-03-03', location: 'Room 102, Building B', status: 'resolved', report_image: winstonImage },
-    { id: 3, title: 'Active Report 3', description: 'Description of active report 3', date_submitted: '2024-03-04', location: 'Room 103, Building A', status: 'rejected', report_image: winstonImage},
-    { id: 4, title: 'Active Report 4', description: 'Description of active report 4', date_submitted: '2024-03-03', location: 'Room 104, Building B', status: 'in-progress', report_image: winstonImage},
-    // Add more active reports as needed
-  ];
-  
-  // Mock data for report history
-  const fakeReportHistory = [
-    { id: 3, title: 'Report History 1', description: 'Description of report history 1', date_submitted: '2023-12-15', location: 'Room 201, Building A', status: 'resolved', report_image: winstonImage},
-    { id: 4, title: 'Report History 2', description: 'Description of report history 2', date_submitted: '2023-11-30', location: 'Room 202, Building B', status: 'resolved', report_image: winstonImage },
-    { id: 5, title: 'Report History 3', description: 'Description of report history 3', date_submitted: '2023-12-15', location: 'Room 203, Building A', status: 'resolved', report_image: winstonImage },
-    { id: 6, title: 'Report History 4', description: 'Description of report history 4', date_submitted: '2023-11-30', location: 'Room 204, Building B', status: 'resolved', report_image: winstonImage },
-  ];
-
   useEffect(() => {
     loggedIn(navigate)
       .then(() => {
-        fetchUserReports();
+        me()
+          .then(user => {
+            fetchUserReports(user.user_id);
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            navigate('/login');
+          });
       })
       .catch(error => {
         console.error('Error:', error);
@@ -44,18 +35,37 @@ export default function ViewReportsPage() {
       });
   }, [navigate]);
 
-  const fetchUserReports = () => {
-    setActiveReports(fakeActiveReports);
-    setHistoryReports(fakeReportHistory);
-
-    // Set userReports based on activeTab
-    // if (activeTab === 'Active') {
-    //   setUserReports(activeReports);
-    // } else {
-    //   setUserReports(reportHistory);
-    // }
+  const fetchUserReports = (userId) => {
+    client
+      .get(`user/${userId}/reports`)
+      .then(response => {
+        console.log('user Id:', userId);
+        console.log('response:', response.data);
+  
+        const reports = Object.values(response.data);
+  
+        const activeReportsFiltered = reports.filter(report => {
+          return report.status_id === 1 || report.status_id === 4;
+        });
+        
+        const historyReportsFiltered = reports.filter(report => {
+          console.log('History Report:', report);
+          return report.status_id === 2 || report.status_id === 3;
+        });
+  
+        setActiveReports(activeReportsFiltered);
+        setHistoryReports(historyReportsFiltered);
+  
+        console.log('Active Reports:', activeReportsFiltered);
+        console.log('History Reports:', historyReportsFiltered);
+      })
+      .catch(error => {
+        console.error('Error fetching user reports:', error);
+      });
   };
-
+  
+  
+  
   return (
     <div className='pt-20'>
       <div className='main-content-holder'>
@@ -75,7 +85,7 @@ export default function ViewReportsPage() {
               ) : (
                 <div>
                   {activeReports.map(report => (
-                    <ReportsComponent key={report.id} report={report} />
+                    <ReportsComponent key={report.id} report={report} winstonImage={winstonImage}/>
                   ))}
                 </div>
               )}
@@ -88,7 +98,7 @@ export default function ViewReportsPage() {
               ) : (
                 <div>
                   {historyReports.map(report => (
-                    <ReportsComponent key={report.id} report={report} />
+                    <ReportsComponent key={report.id} report={report} winstonImage={winstonImage}/>
                   ))}
                 </div>
               )}

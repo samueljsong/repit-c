@@ -29,3 +29,25 @@ export const logout = (navigate) => {
             navigate('/login')
         })
 }
+
+export const me = () => {
+    return client.get('/auth/me')
+        .then(response => {
+            return response.data
+        })
+        .catch(error => {
+            console.error('Error checking authentication:', error);
+            return Promise.reject(error);
+        });
+}
+
+export const getLocationTagById = (locationTagId) => {
+    return client.get(`/user/${locationTagId}`)
+        .then(response => {
+            return response.data;
+        })
+        .catch(error => {
+            console.error('Error fetching location tag:', error);
+            return Promise.reject(error);
+        });
+}

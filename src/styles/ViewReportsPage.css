@@ -59,9 +59,8 @@
 
 .main-content {
     flex-grow: 1; 
-    display: flex;
     justify-content: center;
-    box-shadow: #ccc 0px 0px 5px;
+    box-shadow: #ccc 0px 0px 10px;
     overflow-y: auto;
 }
 
