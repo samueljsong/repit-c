@@ -1,0 +1,78 @@
+.main-content-holder {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 80px);
+    overflow: hidden;
+}
+
+.new-repit-submit-div {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.new-repit-submit-btn {
+    background-color: #043c6c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 80%;
+}
+
+.new-repit-submit-btn:hover {
+    background-color: #043c6c;
+}
+
+.switch-content-buttons-div {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.switch-content-btn {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    padding: 10px 20px;
+    border-radius: 10px 10px 0 0;
+    cursor: pointer;
+    margin: 0;
+    width: 50%;
+}
+
+.switch-content-btn:hover {
+    background-color: #043c6c;
+    color: #fff;
+}
+
+.switch-content-btn.active,
+.switch-content-btn.active:hover {
+    background-color: #043c6c;
+    color: #fff;
+}
+
+.main-content {
+    flex-grow: 1; 
+    justify-content: center;
+    box-shadow: #ccc 0px 0px 10px;
+    overflow-y: auto;
+}
+
+.Active-div,
+.History-div {
+    display: none;
+}
+
+.Active-div {
+    display: block;
+}
+
+.History-div {
+    display: block;
+}
