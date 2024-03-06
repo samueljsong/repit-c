@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import '../App.css';
+import { ImagePopUp } from './AdminUserReportImage';
 
 
-export const AdminUserReportCard = () => {
-    const [open, setOpen] = React.useState(false);
- 
-    const handleOpen = () => setOpen(!open);
-
+export const AdminUserReportCard = (props) => {
     const states = ["green", "yellow", "red", "orange"]
     const [option, setOption] = useState(states[2])
 
     const handleSubmit = () => {
         alert(option)
     }
+
+    const [showImage, setShowImage] = useState(false)
+    const handleOnClose = () => setShowImage(false)
+
 
     return(
         <div>
@@ -49,31 +50,8 @@ export const AdminUserReportCard = () => {
                                 </form>
                             </div>
                             <div className='flex justify-center items-center flex-1'>
-                                {/* <a href="#" className='font-normal text-blue-500 underline decoration-solid hover:text-blue-700'>Image</a> */}
-                                <button onClick={handleOpen} variant="gradient" className='font-normal text-blue-500 underline decoration-solid hover:text-blue-700'>
-                                    Image
-                                </button>
-                                <dialog open={open} handler={handleOpen} className=''>
-                                    <dialogheader>
-                                        <h1 className='font-bold'>Image</h1>
-                                    </dialogheader>
-
-                                    <dialogbody>
-                                        <div className='bg-[#D9D9D9] w-[340px] h-[484px]'>
-                                            
-                                        </div>
-                                    </dialogbody>
-
-                                    <dialogfooter>
-                                        <button variant="gradient" color="green" onClick={handleOpen}>
-                                            <span>Confirm</span>
-                                        </button>
-                                    </dialogfooter>
-                                </dialog>
+                                <button href="#" className='font-normal text-blue-500 underline decoration-solid hover:text-blue-700' onClick={() => setShowImage(true)}>Image</button>
                             </div>
-                        </div>
-                        <div className='mb-1'>
-                        
                         </div>
                         <div className='flex justify-center items-center mt-7'>
                             <button type='submit' form='state-submit' className="flex justify-center items-center px-3 py-2 text-sm font-medium text-center text-white bg-[#043C6C] rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 w-[270px] h-[40px]">
@@ -86,6 +64,7 @@ export const AdminUserReportCard = () => {
                     </div>
                 </div>
             </div>
+            <ImagePopUp visible={showImage} onClose={handleOnClose} /> : <></>
         </div>        
     )
 }
