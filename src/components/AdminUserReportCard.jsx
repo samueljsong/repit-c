@@ -22,11 +22,11 @@ export const AdminUserReportCard = (props) => {
                     <div className="p-5 shadow-lg">
                         <div className='mb-1'>
                             <p className="font-normal text-gray-700 pl-[10px]">Location</p>
-                            <input type="text" value="SW1 2nd Floor" disabled className='bg-[#D9D9D9]'></input>
+                            <input type="text" value="SW1 2nd Floor" disabled className='bg-[#D9D9D9] w-[300px] p-[10px] text-[#333] rounded'></input>
                         </div>
                         <div className='mb-1'>
                             <p className="font-normal text-gray-700 pl-[10px]">Subject of Object</p>
-                            <input type="text" value="Table" disabled className='bg-[#D9D9D9]'></input>
+                            <input type="text" value="Table" disabled className='bg-[#D9D9D9] w-[300px] p-[10px] text-[#333] rounded'></input>
                         </div>
                         <div className='mb-1'>
                             <p className="font-normal text-gray-700 pl-[10px]">Description of Problem</p>
@@ -37,7 +37,7 @@ export const AdminUserReportCard = (props) => {
                                 <h3 className='text-gray-700 pl-[10px]'>Report Status</h3>
                                 <form onSubmit={handleSubmit} id='state-submit'>
                                     <label>
-                                        <select class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center inline-flex items-center" defaultValue={option} onChange={(e) => setOption(e.target.value)}>  
+                                        <select class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm px-3 py-1.5 text-center inline-flex items-center" defaultValue={option} onChange={(e) => setOption(e.target.value)}>  
                                             {states.map((option, idx) => {
                                                 <option key={idx}>{option}</option>
                                             })}          
