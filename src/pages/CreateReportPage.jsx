@@ -1,3 +1,6 @@
+//Styles
+import '../styles/CreateReportPage.css'
+
 import React, { useEffect } from 'react'
 
 //Dependencies
