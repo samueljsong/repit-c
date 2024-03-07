@@ -51,3 +51,14 @@ export const getLocationTagById = (locationTagId) => {
             return Promise.reject(error);
         });
 }
+
+export const getAdminAll = () => {
+    return client.get('/admin/all')
+        .then(response => {
+            return response.data;
+        })
+        .catch(error => {
+            console.error('Error fetching admin all:', error);
+            return Promise.reject(error);
+        });
+}
