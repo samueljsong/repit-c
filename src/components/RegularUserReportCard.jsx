@@ -39,7 +39,7 @@ export const RegularUserReportCard = (props) => {
     return(
         <div>
             <div className='grid h-screen w-full place-items-center bg-background'>
-                <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow mt-[65px]">
+                <div className="w-[20rem] bg-white border border-gray-200 rounded-lg shadow mt-[65px]">
                     <div className="p-5 shadow-lg">
                         <div className='mb-1'>
                             <p className="font-normal text-gray-700 pl-[10px]">Location</p>
@@ -56,7 +56,7 @@ export const RegularUserReportCard = (props) => {
                         </div>
                         <div className='mb-1'>
                             <p className="font-normal text-gray-700 pl-[10px]">Description of Problem</p>
-                            <textarea type="text" value={description} onChange={(e) => setDescription(e.target.value)} className='bg-[#D9D9D9] h-[129px] w-[300px] resize-none p-[10px] text-[#333] rounded'></textarea>
+                            <textarea type="text" value={description} onChange={(e) => setDescription(e.target.value)} className='bg-[#D9D9D9] h-[129px] w-[300px] resize-none p-[10px] text-[#333] rounded w-full'></textarea>
                         </div>
                         <div className='mb-1'>
                             <p className="font-normal text-gray-700 pl-[10px]">Upload Image (Optional)</p>

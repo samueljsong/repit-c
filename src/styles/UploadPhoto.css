@@ -29,7 +29,7 @@
 }
 
 .clear-button{
-    background-color: black;
+    background-color:  rgba(0, 0, 0, 0.5);
     height: 2.5rem;
     width: 13%;
     border-radius: 10px;
