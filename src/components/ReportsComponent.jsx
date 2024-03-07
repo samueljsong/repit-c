@@ -3,13 +3,14 @@ import "../styles/ReportsComponent.css";
 import { getLocationTagById } from "../api/Client";
 
 export default function ReportsComponent({ report, winstonImage }) {
+  console.log("Report: ", report);
   const {
     location_tag_id,
     date_submitted,
     title,
     description,
     status_id,
-    report_image_url,
+    report_image,
   } = report;
   const [showDescription, setShowDescription] = useState(false);
   const [locationTag, setLocationTag] = useState(null);
@@ -89,11 +90,19 @@ export default function ReportsComponent({ report, winstonImage }) {
             )}
             <div className={`status-dot ${getStatusClass()}`} />
           </div>
-          <img
-            className="report-image"
-            src={report_image_url ? report_image_url : winstonImage}
-            alt="Report Image"
-          />
+          {report_image && report_image[0] && report_image[0].image ? (
+            <img
+              className="report-image"
+              src={report_image[0].image.cloudinary_id}
+              alt="Report Image"
+            />
+          ) : (
+            <img
+              className="report-image"
+              src={winstonImage}
+              alt="Winston Image"
+            />
+          )}
         </div>
       </div>
       {showDescription && (
