@@ -1,7 +1,7 @@
 import React from 'react'
 import "../styles/ViewReportsPage.css";
 import winstonImage from "../images/winston.png";
-import ReportsComponent from '../components/ReportsComponent'; // Import ReportsComponent
+import ReportsComponent from '../components/ReportsComponent';
 
 //Dependencies
 import { useNavigate } from 'react-router-dom'

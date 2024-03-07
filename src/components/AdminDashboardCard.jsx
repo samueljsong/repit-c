@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "../styles/AdminDashboard.css";
-import { client, getAdminAll } from "../api/Client";
+import { getAdminAll } from "../api/Client";
 import { useNavigate } from "react-router";
 
-export const AdminDashboard = () => {
+export const AdminDashboardCard = () => {
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -11,12 +11,13 @@ export const AdminDashboard = () => {
 
   useEffect(() => {
     getAdminAll()
-    .then((data) => {
-      setUsers(data)
-      console.log(data)
+      .then((data) => {
+        setUsers(data);
+        console.log(data);
       })
       .catch((error) => console.error("Error fetching users:", error));
   }, []);
+
 
   const filteredUsers = users.filter((user) =>
     user.email.toLowerCase().includes(searchTerm.toLowerCase())
