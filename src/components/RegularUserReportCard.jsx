@@ -23,23 +23,17 @@ export const RegularUserReportCard = (props) => {
     const [buttonDisabled, setButtonDisabled] = useState(false);
 
     useEffect(() => {
-
+        getLocations()
     }, [])
 
     const getLocations = () => {
-        client.get('/user/createReport', {
-            locationTagId: 101, // TEMP
-            subject: subject,
-            description: description,
-            cloudinaryUrl: (image == holder ? '' : image)
-        })
+        client.get('/user/allLocations')
         .then(json => {
             if(json.data.statusCode === 200){
-                navigate('/')
+                console.log(json.data)
             } else {
                 console.log(json)
-                alert("Error: Failed to create report.  ")
-                setButtonDisabled(false)
+                alert("Error: Failed to get locations")
             }
         })
     }
