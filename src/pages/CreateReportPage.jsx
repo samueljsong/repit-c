@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom'
 //API
 import { loggedIn } from '../api/Client'
 
+import { RegularUserReportCard } from '../components/RegularUserReportCard'
+
 export default function CreateReportPage() {
 
   const navigate = useNavigate()
@@ -16,7 +18,7 @@ export default function CreateReportPage() {
 
   return (
     <div className='pt-20'>
-        CreateReport
+        <RegularUserReportCard/>
     </div>
   )
 }
