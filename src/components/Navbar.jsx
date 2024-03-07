@@ -29,10 +29,12 @@ export default function Navbar() {
 
   const onLogoutClick = () => {
     logout(navigate)
+    setIsDropdownOpen(false);
   }
 
   function adminDashboardHandler() {
     navigate('/AdminDashboard')
+    setIsDropdownOpen(false);
   }
 
   const toggleDropdown = () => {

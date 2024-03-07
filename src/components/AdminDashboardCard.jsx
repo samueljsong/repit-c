@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles/AdminDashboard.css";
-import { client, getAdminAll } from "../api/Client";
+import { getAdminAll } from "../api/Client";
 
 export const AdminDashboardCard = () => {
   const [users, setUsers] = useState([]);
