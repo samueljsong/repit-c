@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/AdminDashboard.css";
 import { client, getAdminAll } from "../api/Client";
 
-export const AdminDashboard = () => {
+export const AdminDashboardCard = () => {
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
