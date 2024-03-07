@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { logout } from '../api/Client'
 
 //Dependencies
@@ -7,6 +7,10 @@ import { useNavigate, Link } from 'react-router-dom'
 export default function Navbar() {
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    
+  }, [])
 
   const onLogoutClick = () => {
     logout(navigate)

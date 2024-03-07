@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import '../App.css';
 
@@ -21,6 +21,28 @@ export const RegularUserReportCard = (props) => {
     const [image, setImage] = useState(holder)
 
     const [buttonDisabled, setButtonDisabled] = useState(false);
+
+    useEffect(() => {
+
+    }, [])
+
+    const getLocations = () => {
+        client.get('/user/createReport', {
+            locationTagId: 101, // TEMP
+            subject: subject,
+            description: description,
+            cloudinaryUrl: (image == holder ? '' : image)
+        })
+        .then(json => {
+            if(json.data.statusCode === 200){
+                navigate('/')
+            } else {
+                console.log(json)
+                alert("Error: Failed to create report.  ")
+                setButtonDisabled(false)
+            }
+        })
+    }
 
     const changeImage = (url) => {
         setImage(url)
@@ -77,7 +99,7 @@ export const RegularUserReportCard = (props) => {
                         </div>
                         <div className='mb-1'>
                             <p className="font-normal text-gray-700 pl-[10px]">Description of Problem*</p>
-                            <textarea type="text" value={description} onChange={(e) => setDescription(e.target.value)} className='bg-[#D9D9D9] h-[129px] w-[300px] resize-none p-[10px] text-[#333] rounded w-full'></textarea>
+                            <textarea type="text" value={description} onChange={(e) => setDescription(e.target.value)} className='bg-[#D9D9D9] h-[129px] resize-none p-[10px] text-[#333] rounded w-full'></textarea>
                         </div>
                         <div className='mb-1'>
                             <p className="font-normal text-gray-700 pl-[10px]">Upload Image (Optional)</p>
