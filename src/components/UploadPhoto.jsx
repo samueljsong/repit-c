@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 
-import '../components/UploadPhoto.css'
+import '../styles/UploadPhoto.css'
 
-export const UploadPhoto = () => {
+export const UploadPhoto = (props) => {
 
-    const [image, setImage] = useState("");
+    
 
     const cloudinaryRef = useRef();
     const widgetRef = useRef();
@@ -17,15 +17,18 @@ export const UploadPhoto = () => {
             console.log("HELLO")
             console.log(result)
             if(result.event === "success"){
-                setImage(result.info.secure_url)
+                props.changeImage(result.info.secure_url)
             }
         })
     }, [])
 
     return(
         <div className="general-container">
-            <img className="image" src={image} alt="https://res.cloudinary.com/dxp9ftmcw/image/upload/v1709781917/n8zdgiv16vcgomhryinr.png" />
-            <button onClick={() => widgetRef.current.open()}>Upload</button>
+            <img className="image" src={props.image} alt={"none"}/>
+            <div className="button-container"> 
+                <button className="upload-button" onClick={() => widgetRef.current.open()}>Upload</button>
+                <button className="clear-button" onClick={props.clearImage}>X</button>
+            </div>
         </div>
     )
     
