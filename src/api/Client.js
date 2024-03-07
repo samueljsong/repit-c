@@ -51,3 +51,36 @@ export const getLocationTagById = (locationTagId) => {
             return Promise.reject(error);
         });
 }
+
+export const getAdminAll = () => {
+    return client.get('/admin/all')
+        .then(response => {
+            return response.data;
+        })
+        .catch(error => {
+            console.error('Error fetching admin all:', error);
+            return Promise.reject(error);
+        });
+}
+
+export const getAdminUserReports = (userId) => {
+    return client.get(`/admin/${userId}/reports`)
+        .then(response => {
+            return response.data;
+        })
+        .catch(error => {
+            console.error('Error fetching admin all:', error);
+            return Promise.reject(error);
+        });
+}
+
+export const getAdminUserReport = (reportId) => {
+    return client.get(`/admin/${reportId}/report`)
+        .then(response => {
+            return response.data;
+        })
+        .catch(error => {
+            console.error('Error fetching admin all:', error);
+            return Promise.reject(error);
+        });
+}

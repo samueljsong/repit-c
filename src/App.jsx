@@ -12,6 +12,7 @@ import { AdminDashboard } from './pages/AdminDashboard'
 import { AdminUserReport } from './pages/AdminUserReport'
 import CreateReportPage from './pages/CreateReportPage'
 import ViewReportsPage from './pages/ViewReportsPage'
+import { AdminUserReportList } from './pages/AdminUserReportList'
 
 //Components
 
@@ -27,6 +28,7 @@ function App() {
         <Route path='/view-reports' element={<ViewReportsPage/>}></Route>
         <Route path='/admindashboard' element={<AdminDashboard/>}></Route>
         <Route path='/admin-user-report' element={<AdminUserReport/>}></Route>
+        <Route path='/admin-user-report-list' element={<AdminUserReportList/>}></Route>
       </Routes>
     </>
   )
