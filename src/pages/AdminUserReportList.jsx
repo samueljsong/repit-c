@@ -1,14 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css'
 
-import { client, getAdminUserReports } from "../api/Client";
+import { me, getAdminUserReports } from "../api/Client";
 import { useNavigate } from "react-router";
 import { useLocation } from 'react-router-dom';
 
 
 export const AdminUserReportList = () => {
-    
     const navigate = useNavigate()
+
+    const useAdminOnly = () => {
+        useEffect(() => {
+          me()
+            .then(userData => {
+              if (userData && userData.user_type !== 'admin') {
+                navigate('/login'); 
+              }
+            })
+            .catch(error => {
+              console.error('Error fetching user data:', error);
+              navigate('/login'); 
+            });
+        }, [navigate]);
+      
+        return null;
+    };
+    useAdminOnly()
+    
     const location = useLocation()
 
     const [reports, setReports] = useState([]);

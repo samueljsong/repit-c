@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
 import { ImagePopUp } from './AdminUserReportImage';
-import { getLocationByIdAdmin } from '../api/Client';
+import { getLocationByIdAdmin, getAdminUserReport } from '../api/Client';
 
 
-export const AdminUserReportCard = (props) => {
+export const AdminUserReportCard = (props) => {    
+    const [report, setReport] = useState([])
+    const [location, setLocation] = useState([])
+
     const states = ["green", "orange", "red", "blue"]
-    const [option, setOption] = useState(states[props.status])
+    const [option, setOption] = useState(states[report.status_id])
 
     const handleSubmit = () => {
         alert(option)
@@ -15,16 +18,20 @@ export const AdminUserReportCard = (props) => {
     const [showImage, setShowImage] = useState(false)
     const handleOnClose = () => setShowImage(false)
 
-    const [location, setLocation] = useState([])
-
     useEffect(() => {
-        getLocationByIdAdmin(props.location)
-        .then((response) => {
-            setLocation(response)
-            console.log(response)
-        })
-        .catch((error) => console.error("Error fetching location:", error))
-    }, [])
+        getAdminUserReport(props.reportId)
+          .then((response) => {
+            setReport(response);
+            console.log(response);
+            getLocationByIdAdmin(response.location_tag_id)
+            .then((response) => {
+                setLocation(response)
+                console.log(response)
+            })
+            .catch((error) => console.error("Error fetching location:", error))
+          })
+          .catch((error) => console.error("Error fetching users reports:", error));
+    }, []);
 
     return(
         <div className='grid h-screen w-full place-items-center bg-background'>
@@ -32,7 +39,7 @@ export const AdminUserReportCard = (props) => {
                 <div className="p-5 shadow-lg">
                     <div className='mb-1'>
                         <p className="font-normal text-gray-700 pl-[10px]">Title</p>
-                        <input type="text" value={props.title} disabled className='bg-[#D9D9D9] w-[300px] p-[10px] text-[#333] rounded'></input>
+                        <input type="text" value={report.title} disabled className='bg-[#D9D9D9] w-[300px] p-[10px] text-[#333] rounded'></input>
                     </div>
                     <div className='mb-1'>
                         <p className="font-normal text-gray-700 pl-[10px]">Location</p>
@@ -40,7 +47,7 @@ export const AdminUserReportCard = (props) => {
                     </div>
                     <div className='mb-1'>
                         <p className="font-normal text-gray-700 pl-[10px]">Description of Problem</p>
-                        <textarea type="text" value={props.desc} disabled className='bg-[#D9D9D9] h-[129px] w-[300px] resize-none p-[10px] text-[#333] rounded'></textarea>
+                        <textarea type="text" value={report.description} disabled className='bg-[#D9D9D9] h-[129px] w-[300px] resize-none p-[10px] text-[#333] rounded'></textarea>
                     </div>
                     <div className='mb-5 mt-5 flex flex-row'>
                         <div id='report-status' className='flex flex-col flex-1 wl-64'>
