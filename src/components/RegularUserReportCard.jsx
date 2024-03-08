@@ -76,7 +76,7 @@ export const RegularUserReportCard = (props) => {
     return(
         <div>
             <div className='grid h-screen w-full place-items-center bg-background'>
-                <div className="w-[20rem] bg-white border border-gray-200 rounded-lg shadow mt-[65px]">
+                <div className="w-[20rem] bg-white border border-gray-200 rounded-lg shadow ">
                     <div className="p-5 shadow-lg">
                         <div className='mb-1'>
                             <p className="font-normal text-gray-700 pl-[10px]">Location*</p>
