@@ -14,7 +14,7 @@ export const AdminUserReport = () => {
     useEffect(() => {
         getAdminUserReport(location.state)
           .then((response) => {
-            setReport(response[0]);
+            setReport(response);
             console.log(response);
           })
           .catch((error) => console.error("Error fetching users reports:", error));

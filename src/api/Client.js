@@ -84,3 +84,14 @@ export const getAdminUserReport = (reportId) => {
             return Promise.reject(error);
         });
 }
+
+export const getLocationByIdAdmin = (locationTagId) => {
+    return client.get(`/admin/${locationTagId}`)
+        .then(response => {
+            return response.data;
+        })
+        .catch(error => {
+            console.error('Error fetching location tag:', error);
+            return Promise.reject(error);
+        });
+}

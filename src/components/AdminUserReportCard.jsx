@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../App.css';
 import { ImagePopUp } from './AdminUserReportImage';
+import { getLocationByIdAdmin } from '../api/Client';
 
 
 export const AdminUserReportCard = (props) => {
@@ -14,6 +15,17 @@ export const AdminUserReportCard = (props) => {
     const [showImage, setShowImage] = useState(false)
     const handleOnClose = () => setShowImage(false)
 
+    const [location, setLocation] = useState([])
+
+    useEffect(() => {
+        getLocationByIdAdmin(props.location)
+        .then((response) => {
+            setLocation(response)
+            console.log(response)
+        })
+        .catch((error) => console.error("Error fetching location:", error))
+    }, [])
+
     return(
         <div className='grid h-screen w-full place-items-center bg-background'>
             <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow mt-[10vh]">
@@ -24,7 +36,7 @@ export const AdminUserReportCard = (props) => {
                     </div>
                     <div className='mb-1'>
                         <p className="font-normal text-gray-700 pl-[10px]">Location</p>
-                        <input type="text" value={props.location} disabled className='bg-[#D9D9D9] w-[300px] p-[10px] text-[#333] rounded'></input>
+                        <input type="text" value={location.building} disabled className='bg-[#D9D9D9] w-[300px] p-[10px] text-[#333] rounded'></input>
                     </div>
                     <div className='mb-1'>
                         <p className="font-normal text-gray-700 pl-[10px]">Description of Problem</p>
