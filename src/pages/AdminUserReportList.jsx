@@ -2,33 +2,33 @@ import React, { useState, useEffect } from 'react';
 import '../App.css'
 
 import { me, getAdminUserReports } from "../api/Client";
-import { useNavigate } from "react-router";
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
+const useAdminOnly = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    me()
+      .then(userData => {
+        if (userData && userData.user_type !== 'admin') {
+          navigate('/login'); 
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching user data:', error);
+        navigate('/login'); 
+      });
+  }, [navigate]);
+
+  return null;
+};
 
 export const AdminUserReportList = () => {
-    const navigate = useNavigate()
-
-    const useAdminOnly = () => {
-        useEffect(() => {
-          me()
-            .then(userData => {
-              if (userData && userData.user_type !== 'admin') {
-                navigate('/login'); 
-              }
-            })
-            .catch(error => {
-              console.error('Error fetching user data:', error);
-              navigate('/login'); 
-            });
-        }, [navigate]);
-      
-        return null;
-    };
     useAdminOnly()
-    
-    const location = useLocation()
 
+    const location = useLocation()
+	const navigate = useNavigate();
+	
     const [reports, setReports] = useState([]);
 
     useEffect(() => {
@@ -42,7 +42,7 @@ export const AdminUserReportList = () => {
 
     const handleClick = (reportId) => {
         console.log(`Report with ID ${reportId} clicked`);
-        navigate('/admin-user-report', {state: reportId})
+        navigate('/admin-user-report-card', {state: reportId})
     };
 
     return(
