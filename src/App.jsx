@@ -8,10 +8,11 @@ import { Route, Routes } from 'react-router-dom'
 import { LoginPage } from './pages/LoginPage'
 import { HomePage } from './pages/HomePage'
 import { TutorialPage } from './pages/TutorialPage'
-import { AdminDashboard } from './pages/AdminDashboard'
+import { AdminDashboardPage } from './pages/AdminDashboardPage'
 import { AdminUserReport } from './pages/AdminUserReport'
 import CreateReportPage from './pages/CreateReportPage'
 import ViewReportsPage from './pages/ViewReportsPage'
+import { AdminUserReportList } from './pages/AdminUserReportList'
 
 //Components
 
@@ -25,8 +26,9 @@ function App() {
         <Route path='/tutorial' element={<TutorialPage/>}></Route>
         <Route path='/create' element={<CreateReportPage/>}></Route>
         <Route path='/view-reports' element={<ViewReportsPage/>}></Route>
-        <Route path='/admindashboard' element={<AdminDashboard/>}></Route>
+        <Route path='/admindashboard' element={<AdminDashboardPage/>}></Route>
         <Route path='/admin-user-report' element={<AdminUserReport/>}></Route>
+        <Route path='/admin-user-report-list' element={<AdminUserReportList/>}></Route>
       </Routes>
     </>
   )

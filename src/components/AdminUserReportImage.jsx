@@ -11,7 +11,7 @@ export const ImagePopUp = ({visible, onClose}) => {
     return (
         <div id='container' onClick={handleOnClose} className='fixed inset-0 bg-opacity-30 backdrop-blur-sm bg-black flex justify-center items-center'>
             <div className='bg-white p-2 rounded'> 
-                <p>image here</p>
+                <p>reportImg</p>
             </div>
         </div>
     )

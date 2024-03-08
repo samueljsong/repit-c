@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from "react";
 import "../styles/AdminDashboard.css";
-import { client } from "../api/Client";
+import { getAdminAll } from "../api/Client";
+import { useNavigate } from "react-router";
 
-export const AdminDashboard = () => {
+export const AdminDashboardCard = () => {
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
+  const navigate = useNavigate()
+
   useEffect(() => {
-    client
-      .get("/admin/all")
-      .then((response) => {
-        setUsers(response.data);
-        console.log(response.data);
+    getAdminAll()
+      .then((data) => {
+        setUsers(data);
+        console.log(data);
       })
       .catch((error) => console.error("Error fetching users:", error));
   }, []);
+
 
   const filteredUsers = users.filter((user) =>
     user.email.toLowerCase().includes(searchTerm.toLowerCase())
@@ -22,6 +25,7 @@ export const AdminDashboard = () => {
 
   const handleClick = (userId) => {
     console.log(`User with ID ${userId} clicked`);
+    navigate('/admin-user-report-list', {state: userId})
   };
 
   return (
