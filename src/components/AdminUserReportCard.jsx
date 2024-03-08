@@ -80,7 +80,7 @@ export const AdminUserReportCard = (props) => {
                     </div>
                 </div>
             </div>
-            <ImagePopUp visible={showImage} onClose={handleOnClose} />
+            <ImagePopUp visible={showImage} onClose={handleOnClose} report={report}/>
         </div>        
     )
 }
