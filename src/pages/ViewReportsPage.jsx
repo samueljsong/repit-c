@@ -83,7 +83,7 @@ export default function ViewReportsPage() {
               {activeReports.length === 0 ? (
                 <p>No active reports</p>
               ) : (
-                <div>
+                <div name='report-list'>
                   {activeReports.map(report => (
                     <ReportsComponent key={report.id} report={report} winstonImage={winstonImage}/>
                   ))}

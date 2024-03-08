@@ -6,14 +6,14 @@ describe('Login Page', () => {
       cy.visit(base_url);
       const email = Cypress.env("CYPRESS_REGULAR_EMAIL");
       const password = Cypress.env("CYPRESS_REGULAR_PASSWORD")
-  
-      cy.get('input[name="email"]').type(email);
-      cy.get('input[name="password"]').type(password);
-  
-      cy.get('button.lp-button').click();
+
+      cy.login(email, password);
+
       cy.url().should('eq', base_url + '/');
 
-      cy.get('div[name="logout"]').click();
+      cy.get('div[name="dropdown"]').click();
+      cy.get("button[name='logout']").click({force: true});
+      
   
       cy.url().should('include', '/login');
     });

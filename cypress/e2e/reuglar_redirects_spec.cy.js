@@ -10,13 +10,13 @@ describe('Regular User redirecting to Create and View pages', () => {
 
 
     it('successfully redirects to view page', () => {
-        cy.get('button[name="view"]').click();
+        cy.get('div[name="view"]').click();
 
         cy.url().should('include', '/view-reports');
     });
 
     it('successfully redirects to create report page', () => {    
-        cy.get('button[name="create"]').click();
+        cy.get('div[name="create"]').click();
 
         cy.url().should('include', '/create');
         });

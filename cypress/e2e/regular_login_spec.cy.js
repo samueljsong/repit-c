@@ -3,7 +3,7 @@ describe('Login Page', () => {
   // Create a before each to redirect to visit base_url, unauthenticated should redirect back
 
   it('successfully logs in the user', () => {
-    cy.visit(base_url);
+    cy.visit(base_url + '/login');
     cy.url().should('include', '/login')
     const email = Cypress.env("CYPRESS_REGULAR_EMAIL");
     const password = Cypress.env("CYPRESS_REGULAR_PASSWORD")

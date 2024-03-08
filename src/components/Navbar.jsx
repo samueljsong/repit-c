@@ -71,7 +71,7 @@ export default function Navbar() {
               {userData.user_type === 'admin' && (
                 <button onClick={adminDashboardHandler} className="block w-full text-left px-4 py-2 hover:bg-gray-100">Admin Dashboard</button>
               )}
-              <button onClick={onLogoutClick} className="block w-full text-left px-4 py-2 hover:bg-gray-100">Logout</button>
+              <button name='logout' onClick={onLogoutClick} className="block w-full text-left px-4 py-2 hover:bg-gray-100">Logout</button>
             </div>
           )}
         </div>
