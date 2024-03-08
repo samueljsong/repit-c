@@ -78,6 +78,10 @@ export const RegularUserReportCard = (props) => {
                 <div className="w-[20rem] bg-white border border-gray-200 rounded-lg shadow ">
                     <div className="p-5 shadow-lg">
                         <div className='mb-1'>
+                            <p className="font-normal text-gray-700 pl-[10px]">Title*</p>
+                            <input type="text" value={subject} className='bg-[#D9D9D9] selection:focus:ring-4 font-medium rounded-lg text-sm px-3 py-1.5 inline-flex w-full' onChange={(e) => setSubject(e.target.value)}></input>
+                        </div>
+                        <div className='mb-1'>
                             <p className="font-normal text-gray-700 pl-[10px]">Location*</p>
                             <select class="bg-[#D9D9D9] selection:focus:ring-4 font-medium rounded-lg text-sm px-3 py-1.5 text-center inline-flex items-center w-full" value={location} onChange={(e) => {setLocation(e.target.value); console.log(e.target.value)}}>  
                                 <option key={0} value={0}>Select Location</option>
@@ -85,10 +89,6 @@ export const RegularUserReportCard = (props) => {
                                         return <option key={option.location_tag_id} value={option.location_tag_id}>{option.building + ' - ' + option.room}</option>
                                     })}     
                             </select>
-                        </div>
-                        <div className='mb-1'>
-                            <p className="font-normal text-gray-700 pl-[10px]">Subject of Object*</p>
-                            <input type="text" value={subject} className='bg-[#D9D9D9] selection:focus:ring-4 font-medium rounded-lg text-sm px-3 py-1.5 inline-flex w-full' onChange={(e) => setSubject(e.target.value)}></input>
                         </div>
                         <div className='mb-1'>
                             <p className="font-normal text-gray-700 pl-[10px]">Description of Problem*</p>

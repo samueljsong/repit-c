@@ -20,7 +20,7 @@ export default function CreateReportPage() {
   }, [])
 
   return (
-    <div className='pt-20'>
+    <div className='pt-8'>
         <RegularUserReportCard/>
     </div>
   )
