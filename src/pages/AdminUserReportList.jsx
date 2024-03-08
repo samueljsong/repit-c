@@ -47,7 +47,7 @@ export const AdminUserReportList = () => {
 
     return(
         <div className='h-[100vh] w-full grid place-items-center bg-[#f9f9f9]'>
-            <div className="dashboard-div mt-[12vh] relative h-[80%] w-[80%] bg-white shadow-">
+            <div className="dashboard-div mt-[12vh] h-[80%] w-[80%] bg-white shadow-">
                 <h2 name="title" className="dashboard-title">List of Reports</h2>
                 <div className="dashboard-list">
                     <div className="scrollable-list">
