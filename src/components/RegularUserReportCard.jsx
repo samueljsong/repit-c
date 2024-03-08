@@ -11,16 +11,17 @@ import { client } from '../api/Client'
 
 export const RegularUserReportCard = (props) => {
     const navigate = useNavigate();
-    const locationOptions = ["Select Option", "SW1 1st Floor", "SW1 2nd Floor", "SE12 - 303", "SW12 - 323"] // Get from database (NOT POPULATED YET)
     
-    const [location, setLocation] = useState(locationOptions[0])
+    const [allLocations, setAllLocations] = useState([]);
+    const [location, setLocation] = useState(0);
 
-    const [subject, setSubject] = useState('')
-    const [description, setDescription] = useState('')
+    const [subject, setSubject] = useState('');
+    const [description, setDescription] = useState('');
 
-    const [image, setImage] = useState(holder)
+    const [image, setImage] = useState(holder);
 
     const [buttonDisabled, setButtonDisabled] = useState(false);
+    
 
     useEffect(() => {
         getLocations()
@@ -29,10 +30,9 @@ export const RegularUserReportCard = (props) => {
     const getLocations = () => {
         client.get('/user/allLocations')
         .then(json => {
-            if(json.data.statusCode === 200){
-                console.log(json.data)
+            if(json.status === 200){
+                setAllLocations(json.data)
             } else {
-                console.log(json)
                 alert("Error: Failed to get locations")
             }
         })
@@ -48,12 +48,11 @@ export const RegularUserReportCard = (props) => {
 
     const handleSubmit = () => {
         setButtonDisabled(true)
-        if(location == locationOptions[0] || description == '' || subject == '') {
+        if(location <= 0 || description == '' || subject == '') {
             alert("Please fill out all required fields!")
         }
-        
         client.post('/user/createReport', {
-            locationTagId: 101, // TEMP
+            locationTagId: parseInt(location), 
             subject: subject,
             description: description,
             cloudinaryUrl: (image == holder ? '' : image)
@@ -80,11 +79,11 @@ export const RegularUserReportCard = (props) => {
                     <div className="p-5 shadow-lg">
                         <div className='mb-1'>
                             <p className="font-normal text-gray-700 pl-[10px]">Location*</p>
-                            {/* <input type="text" value={location} className='bg-[#D9D9D9]' onChange={(e) => setLocation(e.target.value)}></input> */}
-                            <select class="bg-[#D9D9D9] selection:focus:ring-4 font-medium rounded-lg text-sm px-3 py-1.5 text-center inline-flex items-center w-full" value={location} onChange={(e) => setLocation(e.target.value)}>  
-                                {locationOptions.map((option, idx) => {
-                                    return <option key={idx}>{option}</option>
-                                })}     
+                            <select class="bg-[#D9D9D9] selection:focus:ring-4 font-medium rounded-lg text-sm px-3 py-1.5 text-center inline-flex items-center w-full" value={location} onChange={(e) => {setLocation(e.target.value); console.log(e.target.value)}}>  
+                                <option key={0} value={0}>Select Location</option>
+                                    {allLocations.map((option) => {
+                                        return <option key={option.location_tag_id} value={option.location_tag_id}>{option.building + ' - ' + option.room}</option>
+                                    })}     
                             </select>
                         </div>
                         <div className='mb-1'>

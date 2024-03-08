@@ -42,7 +42,7 @@ export const me = () => {
 }
 
 export const getLocationTagById = (locationTagId) => {
-    return client.get(`/user/${locationTagId}`)
+    return client.get(`/user/locationTagIds/${locationTagId}`)
         .then(response => {
             return response.data;
         })
