@@ -95,3 +95,14 @@ export const getLocationByIdAdmin = (locationTagId) => {
             return Promise.reject(error);
         });
 }
+
+export const updateReportStateAdmin = (reportId, state) => {
+    return client.patch(`/admin/${reportId}/change-state/${state}`)
+        .then(response => {
+            return response.data;
+        })
+        .catch(error => {
+            console.error('Error updating user report state:', error);
+            return Promise.reject(error);
+        });
+}

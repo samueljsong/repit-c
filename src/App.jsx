@@ -27,7 +27,7 @@ function App() {
         <Route path='/create' element={<CreateReportPage/>}></Route>
         <Route path='/view-reports' element={<ViewReportsPage/>}></Route>
         <Route path='/admindashboard' element={<AdminDashboardPage/>}></Route>
-        <Route path='/admin-user-report' element={<AdminUserReport/>}></Route>
+        <Route path='/admin-user-report-card' element={<AdminUserReport/>}></Route>
         <Route path='/admin-user-report-list' element={<AdminUserReportList/>}></Route>
       </Routes>
     </>
