@@ -3,7 +3,7 @@ describe('A user creates a report', () => {
         const base_url = Cypress.env("CYPRESS_BASE_URL");
         cy.loginAdmin();
         cy.visit(base_url + "/AdminDashboard")
-        cy.get('button[key="19"]').click();
+        cy.get('button[name="19"]').click();
         cy.get('ul.user-list').first().click();
 
         cy.get('select[name="status"]').select('4');

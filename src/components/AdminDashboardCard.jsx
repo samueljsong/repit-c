@@ -43,7 +43,7 @@ export const AdminDashboardCard = () => {
           <div className="scrollable-list">
             <ul className="user-list">
               {filteredUsers.map((user) => (
-                <button
+                <button name={user.user_id}
                   key={user.user_id}
                   onClick={() => handleClick(user.user_id)}
                 >
