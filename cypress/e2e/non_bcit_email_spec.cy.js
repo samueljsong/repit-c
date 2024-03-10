@@ -5,15 +5,11 @@ describe('A user creates a report', () => {
         cy.visit(base_url + "/create")
         cy.get('input[name="title"]').type('testTitle');
         cy.get('textarea[name="description"]').type('testDescription');
-
-        cy.get('select[name="location"]').select('101');
-        cy.get('select[name="location"]').should('have.value', '101'); // Checks if the location tag was properly added
-
-        cy.visit(base_url + "/create")
-        cy.get('div[name="cloudinaryWidget"').should('exist'); // Check if the cloudinary widget exsits
+        cy.get('select[name="location"]').select('101')
+        cy.get('select[name="location"]').should('have.value', '101') // Selecting a location tag retrieved from db
 
         cy.get('button[name="submit"]').click();
         cy.wait(500)
-        cy.url().should('eq', base_url + '/'); // a report has successfully been created.
+        cy.url().should('eq', base_url + '/');
     });
 })

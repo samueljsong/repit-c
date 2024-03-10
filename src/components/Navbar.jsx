@@ -69,7 +69,7 @@ export default function Navbar() {
           {isDropdownOpen && (
             <div className="absolute top-full left-0 bg-white border shadow-md py-2 !z-20 ">
               {userData.user_type === 'admin' && (
-                <button onClick={adminDashboardHandler} className="block w-full text-left px-4 py-2 hover:bg-gray-100">Admin Dashboard</button>
+                <button name='adminButton' onClick={adminDashboardHandler} className="block w-full text-left px-4 py-2 hover:bg-gray-100">Admin Dashboard</button>
               )}
               <button name='logout' onClick={onLogoutClick} className="block w-full text-left px-4 py-2 hover:bg-gray-100">Logout</button>
             </div>

@@ -20,8 +20,6 @@ export const UploadPhoto = (props) => {
             cloudName: "dxp9ftmcw",
             uploadPreset: "z5ejbum7"
         }, function(error, result){
-            console.log("HELLO")
-            console.log(result)
             if(result.event === "success"){
                 props.changeImage(result.info.secure_url)
                 setHasImage(true)
@@ -31,7 +29,7 @@ export const UploadPhoto = (props) => {
 
     return(
         <div className={"general-container relative" + (hasImage ? "" : " border-dashed border-opacity-85 border-black border rounded-md")}>
-            <div onClick={() => widgetRef.current.open()} className="flex justify-center align-middle w-full h-full min-h-40">
+            <div name="cloudinaryWidget" onClick={() => widgetRef.current.open()} className="flex justify-center align-middle w-full h-full min-h-40">
             {
                 (hasImage ? 
                 <img className="image" src={props.image} alt={"none"}/> :

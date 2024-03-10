@@ -72,7 +72,7 @@ export const AdminUserReportCard = (props) => {
                         <div id='report-status' className='flex flex-col flex-1 wl-64'>
                             <h3 className='text-gray-700 pl-[10px]'>Report Status</h3>
                             <label>
-                                <select className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm px-3 py-1.5 text-center inline-flex items-center" onChange={(e) => setOption(e.target.value)}>    
+                                <select name='status' className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm px-3 py-1.5 text-center inline-flex items-center" onChange={(e) => setOption(e.target.value)}>    
                                     {report.status_id == 1 ? (<option value={1} selected>Unread 🟠</option>) : (<option value={1}>Unread 🟠</option>)}
                                     {report.status_id == 2 ? (<option value={2} selected>Resolved 🟢</option>) : (<option value={2}>Resolved 🟢</option>)}
                                     {report.status_id == 3 ? (<option value={3} selected>Rejected 🔴</option>) : (<option value={3}>Rejected 🔴</option>)}
@@ -85,7 +85,7 @@ export const AdminUserReportCard = (props) => {
                         </div>
                     </div>
                     <div className='flex justify-center items-center mt-7'>
-                        <button onClick={handleSubmit} className="flex justify-center items-center px-3 py-2 text-sm font-medium text-center text-white bg-[#043C6C] rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 w-[270px] h-[40px]">
+                        <button name='submit' onClick={handleSubmit} className="flex justify-center items-center px-3 py-2 text-sm font-medium text-center text-white bg-[#043C6C] rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 w-[270px] h-[40px]">
                             Submit
                             <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2 mt-[2.2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
