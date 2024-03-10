@@ -2,7 +2,7 @@ describe('A user creates a report', () => {
     it('successfully creates a report', () => {
         const base_url = Cypress.env("CYPRESS_BASE_URL");
         
-        cy.loginRegular(email)
+        cy.loginRegular()
         cy.wait(500)
         cy.visit(base_url + "/view-reports")
 

@@ -1,7 +1,7 @@
 describe('A user creates a report', () => { 
     it('successfully creates a report', () => {
         const base_url = Cypress.env("CYPRESS_BASE_URL");
-        cy.adminLogin();
+        cy.loginAdmin();
         cy.visit(base_url + "/AdminDashboard")
         cy.get('button[key="19"]').click();
         cy.get('ul.user-list').first().click();
