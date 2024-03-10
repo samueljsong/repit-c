@@ -110,7 +110,7 @@ export const LoginPage = () => {
                     Forgot your <a href="">BCIT email</a> or <a href="">password?</a>
                 </motion.div> 
                 <span></span>
-           </div>
+           </div> 
            <ToastContainer/>
         </div>
     )
