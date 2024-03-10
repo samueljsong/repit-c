@@ -6,6 +6,10 @@ import '../App.css'
 import mail from '../assets/icons/mail.png'
 import lock from '../assets/icons/lock.png'
 
+//Toast
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+
 //Dependencies
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -15,6 +19,7 @@ import { motion } from 'framer-motion'
 import { client } from '../api/Client'
 
 export const LoginPage = () => {
+    let errorMsg = '';
     const navigate = useNavigate();
 
     const [email, setEmail] = useState('')
@@ -29,7 +34,11 @@ export const LoginPage = () => {
     }
 
     const onLoginHandler = () => {
-
+        if (password == '' || email == '') {
+            failToast("Please fill out both login fields");
+        } else if (!checkEmail(email)) {
+            failToast("Please enter a valid BCIT email.");
+        }
         client.post('/auth/login', {
             email: email,
             password: password
@@ -37,8 +46,25 @@ export const LoginPage = () => {
         .then(json => {
             if(json.data.statusCode === 200){
                 navigate('/')
+            } else {
+                failToast("Invalid credentials, please try again");
             }
+            console.log(json);
+        }).catch(() =>{
+            failToast("Invalid credentials, please try again");
         })
+    }
+
+    const failToast = (message) => {
+        toast.error(message, {
+            position: "bottom-center",
+            theme: "dark"
+        })
+    }
+
+    const checkEmail = (email) => {
+        const domain = email.split('@')[1];
+        return (domain === 'my.bcit.ca' || domain === 'bcit.ca')
     }
 
     return (
@@ -85,6 +111,7 @@ export const LoginPage = () => {
                 </motion.div> 
                 <span></span>
            </div>
+           <ToastContainer/>
         </div>
     )
 }
