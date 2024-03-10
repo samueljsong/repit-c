@@ -46,10 +46,10 @@ export const AdminUserReportList = () => {
     };
 
     return(
-        <div className='h-[100vh] w-full grid place-items-center bg-[#f9f9f9]'>
-            <div className="dashboard-div mt-[12vh] h-[80%] w-[80%] bg-white shadow-">
+        <div className='h-[100vh] w-full grid place-items-center bg-[#f9f9f9] overflow-hidden'>
+            <div className="h-[80%] w-[80%] bg-white shadow-lg rounded-lg mt-[10vh]">
                 <h2 name="title" className="dashboard-title">List of Reports</h2>
-                <div className="dashboard-list">
+                <div className="p-[20px] pt-[10px] h-[80%]">
                     <div className="scrollable-list">
                         <ul className="user-list">
                         {reports.map((report) => (
