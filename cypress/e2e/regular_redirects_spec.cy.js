@@ -2,10 +2,7 @@ describe('Regular User redirecting to Create and View pages', () => {
     const base_url = Cypress.env("CYPRESS_BASE_URL")
     
     beforeEach(() => {
-        const email = Cypress.env("CYPRESS_REGULAR_EMAIL");
-        const password = Cypress.env("CYPRESS_REGULAR_PASSWORD")
-        cy.visit(base_url);
-        cy.login(email, password)
+        cy.loginRegular();
     })
 
 
