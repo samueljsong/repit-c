@@ -6,6 +6,9 @@ import {UploadPhoto} from "./UploadPhoto"
 
 import holder from "../assets/holder.png"
 
+//Toast
+import createToast from '../components/CreateToast'
+
 //API
 import { client } from '../api/Client'
 
@@ -21,6 +24,8 @@ export const RegularUserReportCard = (props) => {
     const [image, setImage] = useState(holder);
 
     const [buttonDisabled, setButtonDisabled] = useState(false);
+
+    const { failToast, successToast } = createToast();
     
 
     useEffect(() => {
@@ -33,7 +38,7 @@ export const RegularUserReportCard = (props) => {
             if(json.status === 200){
                 setAllLocations(json.data)
             } else {
-                alert("Error: Failed to get locations")
+                failToast("Error: Failed to get locations")
             }
         })
     }
@@ -46,10 +51,20 @@ export const RegularUserReportCard = (props) => {
         setImage(holder)
     }
 
+    const resetFields = () => {
+        setButtonDisabled(false);
+        setLocation(0);
+        setSubject('');
+        setDescription('');
+        setImage(holder);
+
+    }
+
     const handleSubmit = () => {
         setButtonDisabled(true)
         if(location <= 0 || description == '' || subject == '') {
-            alert("Please fill out all required fields!")
+            failToast("Please fill out all required fields!");
+            return;
         }
         client.post('/user/createReport', {
             locationTagId: parseInt(location), 
@@ -59,11 +74,12 @@ export const RegularUserReportCard = (props) => {
         })
         .then(json => {
             if(json.data.statusCode === 200){
-                navigate('/')
+                resetFields();
+                navigate('/');
+                successToast("Successfully created a report!");
             } else {
-                console.log(json)
-                alert("Error: Failed to create report.  ")
-                setButtonDisabled(false)
+                failToast("Error: Failed to create report, please try again.")
+                resetFields()
             }
         })
     }

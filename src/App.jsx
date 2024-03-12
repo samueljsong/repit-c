@@ -1,6 +1,8 @@
 //Styles
 import './App.css'
 
+import { ToastContainer } from 'react-toastify';
+
 //Dependencies
 import { Route, Routes } from 'react-router-dom'
 
@@ -30,6 +32,7 @@ function App() {
         <Route path='/admin-user-report-card' element={<AdminUserReport/>}></Route>
         <Route path='/admin-user-report-list' element={<AdminUserReportList/>}></Route>
       </Routes>
+      <ToastContainer/>
     </>
   )
 }

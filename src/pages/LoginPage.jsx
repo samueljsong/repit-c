@@ -7,8 +7,8 @@ import mail from '../assets/icons/mail.png'
 import lock from '../assets/icons/lock.png'
 
 //Toast
-import { toast, ToastContainer } from 'react-toastify';
-import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from 'react-toastify';
+import createToast from '../components/CreateToast'
 
 //Dependencies
 import { useEffect, useState } from 'react'
@@ -19,6 +19,7 @@ import { motion } from 'framer-motion'
 import { client } from '../api/Client'
 
 export const LoginPage = () => {
+    const { failToast } = createToast();
     let errorMsg = '';
     const navigate = useNavigate();
 
@@ -36,8 +37,10 @@ export const LoginPage = () => {
     const onLoginHandler = () => {
         if (password == '' || email == '') {
             failToast("Please fill out both login fields");
+            return;
         } else if (!checkEmail(email)) {
             failToast("Please enter a valid BCIT email.");
+            return;
         }
         client.post('/auth/login', {
             email: email,
@@ -52,13 +55,6 @@ export const LoginPage = () => {
             console.log(json);
         }).catch(() =>{
             failToast("Invalid credentials, please try again");
-        })
-    }
-
-    const failToast = (message) => {
-        toast.error(message, {
-            position: "bottom-center",
-            theme: "dark"
         })
     }
 
@@ -111,7 +107,7 @@ export const LoginPage = () => {
                 </motion.div> 
                 <span></span>
            </div>
-           <ToastContainer/>
+           {/* <ToastContainer/> */}
         </div>
     )
 }

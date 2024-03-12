@@ -1,4 +1,5 @@
 import axios from 'axios'
+import createToast from '../components/CreateToast';
 
 export const client = axios.create({
     baseURL: 'http://localhost:3000/api',
@@ -7,6 +8,7 @@ export const client = axios.create({
 })
 
 export const loggedIn = (navigate) => {
+    const { failToast } = createToast();
     return client.get('/auth/me')
         .then(response => {
             if (response.data) {
@@ -18,6 +20,7 @@ export const loggedIn = (navigate) => {
         })
         .catch(error => {
             console.error('Error checking authentication:', error);
+            failToast("Failed to authenticate user. Please login.");
             navigate('/login');
             return Promise.reject(error);
         });
