@@ -9,7 +9,6 @@ describe('A user creates a report', () => {
         cy.get('select[name="location"]').select('101');
         cy.get('select[name="location"]').should('have.value', '101'); // Checks if the location tag was properly added
 
-        cy.visit(base_url + "/create")
         cy.get('div[name="cloudinaryWidget"').should('exist'); // Check if the cloudinary widget exsits
 
         cy.get('button[name="submit"]').click();

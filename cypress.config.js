@@ -1,11 +1,12 @@
 import { defineConfig } from "cypress";
 
 export default defineConfig({
-  component: {
-    devServer: {
-      framework: "react",
-      bundler: "vite",
-    },
+    projectId: "ssqdm6",
+    component: {
+        devServer: {
+        framework: "react",
+        bundler: "vite",
+        },
   },
 
   e2e: {
