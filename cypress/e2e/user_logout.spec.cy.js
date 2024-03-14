@@ -6,7 +6,7 @@ describe('Logging User Out', () => {
       cy.loginRegular();
 
       cy.get('div[name="dropdown"]').click();
-      cy.get("button[name='logout']").invoke('show').click({force: true});
+      cy.get("button[name='logout']").click({force: true});
 
       cy.url().should('include', '/login');
     });
