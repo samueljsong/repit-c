@@ -81,3 +81,5 @@ export const TutorialPage = () => {
     </AnimatePresence>
   );
 };
+
+export default TutorialPage;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
 
-import { UploadPhoto } from './UploadPhoto';
+import UploadPhoto from './UploadPhoto';
 
 import holder from '../assets/holder.png';
 
