@@ -53,7 +53,7 @@ function AdminUserReportList() {
           <div className='scrollable-list'>
             <ul className='user-list'>
               {reports.map((report) => (
-                <button key={report.report_id} type='button' onClick={() => handleClick(report.report_id)}>
+                <button className='button-report' key={report.report_id} type='button' onClick={() => handleClick(report.report_id)}>
                   {' '}
                   {report.title}
                 </button>
