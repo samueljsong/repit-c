@@ -23,7 +23,6 @@
     "babel-plugin-istanbul": "^6.1.1",
     "dotenv": "^16.4.5",
     "dotenv-cli": "^7.4.1",
-    "framer": "^2.4.1",
     "framer-motion": "^11.0.20",
     "istanbul-lib-coverage": "^3.2.2",
     "motion": "^10.17.0",
