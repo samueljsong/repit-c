@@ -1,15 +1,14 @@
-import React from 'react'
-import "../styles/ViewReportsPage.css";
-import winstonImage from "../images/winston.png";
+import React from 'react';
+import '../styles/ViewReportsPage.css';
+import winstonImage from '../images/winston.png';
 import ReportsComponent from '../components/ReportsComponent';
 
 //Dependencies
-import { useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 //API
-import { client, loggedIn, me } from '../api/Client'
-
+import { client, loggedIn, me } from '../api/Client';
 
 export default function ViewReportsPage() {
   const navigate = useNavigate();
@@ -21,15 +20,15 @@ export default function ViewReportsPage() {
     loggedIn(navigate)
       .then(() => {
         me()
-          .then(user => {
+          .then((user) => {
             fetchUserReports(user.user_id);
           })
-          .catch(error => {
+          .catch((error) => {
             console.error('Error:', error);
             navigate('/login');
           });
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Error:', error);
         navigate('/login');
       });
@@ -38,43 +37,53 @@ export default function ViewReportsPage() {
   const fetchUserReports = (userId) => {
     client
       .get(`user/${userId}/reports`)
-      .then(response => {
+      .then((response) => {
         console.log('user Id:', userId);
         console.log('response:', response.data);
-  
+
         const reports = Object.values(response.data);
-  
-        const activeReportsFiltered = reports.filter(report => {
+
+        const activeReportsFiltered = reports.filter((report) => {
           return report.status_id === 1 || report.status_id === 4;
         });
-        
-        const historyReportsFiltered = reports.filter(report => {
+
+        const historyReportsFiltered = reports.filter((report) => {
           console.log('History Report:', report);
           return report.status_id === 2 || report.status_id === 3;
         });
-  
+
         setActiveReports(activeReportsFiltered);
         setHistoryReports(historyReportsFiltered);
-  
+
         console.log('Active Reports:', activeReportsFiltered);
         console.log('History Reports:', historyReportsFiltered);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Error fetching user reports:', error);
       });
   };
-  
-  
-  
+
   return (
     <div className='pt-20'>
       <div className='main-content-holder'>
         <div className='new-repit-submit-div'>
-          <button className='new-repit-submit-btn' onClick={() => navigate('/create')}>New Repit</button>
+          <button className='new-repit-submit-btn' onClick={() => navigate('/create')}>
+            New Repit
+          </button>
         </div>
         <div className='swtich-content-buttons-div'>
-          <button className={`switch-content-btn ${activeTab === 'Active' ? 'active' : ''}`} onClick={() => setActiveTab('Active')}>Active</button>
-          <button className={`switch-content-btn ${activeTab === 'History' ? 'active' : ''}`} onClick={() => setActiveTab('History')}>History</button>
+          <button
+            className={`switch-content-btn ${activeTab === 'Active' ? 'active' : ''}`}
+            onClick={() => setActiveTab('Active')}
+          >
+            Active
+          </button>
+          <button
+            className={`switch-content-btn ${activeTab === 'History' ? 'active' : ''}`}
+            onClick={() => setActiveTab('History')}
+          >
+            History
+          </button>
         </div>
         <div className='main-content'>
           {activeTab === 'Active' ? (
@@ -84,8 +93,8 @@ export default function ViewReportsPage() {
                 <p>No active reports</p>
               ) : (
                 <div name='report-list'>
-                  {activeReports.map(report => (
-                    <ReportsComponent key={report.id} report={report} winstonImage={winstonImage}/>
+                  {activeReports.map((report) => (
+                    <ReportsComponent key={report.id} report={report} winstonImage={winstonImage} />
                   ))}
                 </div>
               )}
@@ -97,8 +106,8 @@ export default function ViewReportsPage() {
                 <p>No report history</p>
               ) : (
                 <div>
-                  {historyReports.map(report => (
-                    <ReportsComponent key={report.id} report={report} winstonImage={winstonImage}/>
+                  {historyReports.map((report) => (
+                    <ReportsComponent key={report.id} report={report} winstonImage={winstonImage} />
                   ))}
                 </div>
               )}

@@ -3,9 +3,13 @@
         "browser": true,
         "es2021": true,
         "node": true,
+        "cypess": true
     },
     "extends": 
-        "airbnb",
+    [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
         
     "parserOptions": {
         "ecmaVersion": "latest",

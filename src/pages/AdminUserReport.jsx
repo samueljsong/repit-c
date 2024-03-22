@@ -1,37 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import '../App.css'
-
-import { AdminUserReportCard } from '../components/AdminUserReportCard'
-import { me } from "../api/Client";
+import React, { useEffect } from 'react';
+import '../App.css';
 import { useLocation, useNavigate } from 'react-router-dom';
+
+import { AdminUserReportCard } from '../components/AdminUserReportCard';
+import { me } from '../api/Client';
 
 const useAdminOnly = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
     me()
-      .then(userData => {
+      .then((userData) => {
         if (userData && userData.user_type !== 'admin') {
-          navigate('/login'); 
+          navigate('/login');
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Error fetching user data:', error);
-        navigate('/login'); 
+        navigate('/login');
       });
   }, [navigate]);
 
   return null;
 };
 
-export const AdminUserReport = () => {
-    useAdminOnly()
-    const location = useLocation()
-    
-    return(
-        <div>
-            <AdminUserReportCard reportId={location.state}/>
-        </div>
-    )
-}
+const AdminUserReport = function () {
+  useAdminOnly();
+  const location = useLocation();
 
+  return (
+    <div>
+      <AdminUserReportCard reportId={location.state} />
+    </div>
+  );
+};
+
+export default AdminUserReport;

@@ -24,14 +24,14 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/" element={<HomePage />} />
-        <Route path="/tutorial" element={<TutorialPage />} />
-        <Route path="/create" element={<CreateReportPage />} />
-        <Route path="/view-reports" element={<ViewReportsPage />} />
-        <Route path="/admindashboard" element={<AdminDashboardPage />} />
-        <Route path="/admin-user-report-card" element={<AdminUserReport />} />
-        <Route path="/admin-user-report-list" element={<AdminUserReportList />} />
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/' element={<HomePage />} />
+        <Route path='/tutorial' element={<TutorialPage />} />
+        <Route path='/create' element={<CreateReportPage />} />
+        <Route path='/view-reports' element={<ViewReportsPage />} />
+        <Route path='/admindashboard' element={<AdminDashboardPage />} />
+        <Route path='/admin-user-report-card' element={<AdminUserReport />} />
+        <Route path='/admin-user-report-list' element={<AdminUserReportList />} />
       </Routes>
       <ToastContainer />
     </>

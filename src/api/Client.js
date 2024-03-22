@@ -28,7 +28,7 @@ export const loggedIn = (navigate) => {
 
 export const logout = (navigate) => {
     client.get('/auth/logout')
-        .then(json => {
+        .then(() => {
             navigate('/login')
         })
 }

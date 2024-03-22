@@ -1,27 +1,26 @@
-//Styles
-import '../styles/CreateReportPage.css'
+// Styles
+import '../styles/CreateReportPage.css';
 
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 
-//Dependencies
-import { useNavigate } from 'react-router-dom'
+// Dependencies
+import { useNavigate } from 'react-router-dom';
 
-//API
-import { loggedIn } from '../api/Client'
+// API
+import { loggedIn } from '../api/Client';
 
-import { RegularUserReportCard } from '../components/RegularUserReportCard'
+import { RegularUserReportCard } from '../components/RegularUserReportCard';
 
 export default function CreateReportPage() {
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
-
-  useEffect(()=> {
-    loggedIn(navigate)
-  }, [])
+  useEffect(() => {
+    loggedIn(navigate);
+  }, []);
 
   return (
     <div className='pt-8'>
-        <RegularUserReportCard/>
+      <RegularUserReportCard />
     </div>
-  )
+  );
 }
