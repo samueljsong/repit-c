@@ -11,7 +11,7 @@ describe('A user creates a report', () => {
         cy.wait(500);
         
         cy.reload();
-
+        cy.wait(500);
         cy.get('ul.user-list').first().click();
         cy.get('select[name="status"]').should('have.value', '4');
     });

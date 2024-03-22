@@ -2,16 +2,11 @@
     "env": {
         "browser": true,
         "es2021": true,
-        "cypress/node": true
+        "node": true,
     },
     "extends": 
         "airbnb",
-        "plugin:cypress/recommended": "error",
-    
-    "plugins": [
-        "cypress"
-    ],
-    
+        
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module"

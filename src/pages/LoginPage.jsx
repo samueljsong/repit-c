@@ -18,7 +18,7 @@ import createToast from '../components/CreateToast';
 // API
 import { client } from '../api/Client';
 
-export default function LoginPage() {
+function LoginPage() {
   const { failToast } = createToast();
   const navigate = useNavigate();
 
@@ -124,3 +124,5 @@ export default function LoginPage() {
     </div>
   );
 }
+
+export default LoginPage;
