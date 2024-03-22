@@ -17,5 +17,7 @@ describe('Login Page', () => {
         cy.url().should('eq', base_url + '/');
         cy.get('div[name="dropdown"]').click();
         cy.get('button[name="logout"]').should('exist');
+        cy.wait(500)
+        cy.get('div.Toastify').children().should('have.length', 1);
     });
 });
