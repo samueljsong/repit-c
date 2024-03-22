@@ -1,29 +1,28 @@
 import React, { useEffect } from 'react';
-import '../App.css'
+import '../App.css';
 import { useNavigate } from 'react-router-dom';
 import { me } from '../api/Client';
-import { AdminDashboardCard } from '../components/AdminDashboardCard'
+import { AdminDashboardCard } from '../components/AdminDashboardCard';
 
 const useAdminOnly = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
     me()
-      .then(userData => {
+      .then((userData) => {
         if (userData && userData.user_type !== 'admin') {
-          navigate('/login'); 
+          navigate('/login');
         }
       })
-      .catch(error => {
-        console.error('Error fetching user data:', error);
-        navigate('/login'); 
+      .catch(() => {
+        navigate('/login');
       });
   }, [navigate]);
 
   return null;
 };
 
-export const AdminDashboardPage = () => {
+function AdminDashboardPage() {
   useAdminOnly();
 
   return (
@@ -31,4 +30,6 @@ export const AdminDashboardPage = () => {
       <AdminDashboardCard />
     </div>
   );
-};
+}
+
+export default AdminDashboardPage;
