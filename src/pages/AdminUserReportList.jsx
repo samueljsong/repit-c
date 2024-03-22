@@ -53,7 +53,7 @@ export const AdminUserReportList = () => {
                     <div className="scrollable-list">
                         <ul className="user-list">
                         {reports.map((report) => (
-                            <button
+                            <button className='button-report'
                             key={report.report_id}
                             onClick={() => handleClick(report.report_id)}
                             >

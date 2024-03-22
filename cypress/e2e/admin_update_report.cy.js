@@ -4,7 +4,9 @@ describe('A user creates a report', () => {
         cy.loginAdmin();
         cy.visit(base_url + "/AdminDashboard")
         cy.get('button[name="19"]').click();
-        cy.get('ul.user-list').first().click();
+        cy.wait(1000)
+        cy.get('.button-report').first().click({ force: true });
+        cy.url().should('eq', base_url + "/admin-user-report-card")
 
         cy.get('select[name="status"]').select('4');
         cy.get('button[name="submit"]').click();
@@ -12,7 +14,7 @@ describe('A user creates a report', () => {
         
         cy.reload();
         cy.wait(500);
-        cy.get('ul.user-list').first().click();
+        cy.get('.button-report').first().click({ force: true });
         cy.get('select[name="status"]').should('have.value', '4');
     });
 })
