@@ -49,8 +49,6 @@ export const LoginPage = () => {
         .then(json => {
             if(json.data.statusCode === 200){
                 navigate('/')
-            } else {
-                failToast("Invalid credentials, please try again");
             }
             console.log(json);
         }).catch(() =>{
