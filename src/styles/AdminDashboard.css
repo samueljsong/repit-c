@@ -1,41 +1,91 @@
 .main-div {
-    margin: 20px;
-  }
-  
-  .dashboard-div {
-    border: 1px solid #ccc;
-    padding: 20px;
-  }
-  
-  h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-  }
-  
-  input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    color: #333;
-  }
-  
-  
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  li {
-    margin-bottom: 5px;
-    padding: 10px;
-    border: 1px solid #eee;
-    border-radius: 5px;
-  }
-  
-  /* Style for selected item */
-  li:hover {
-    background-color: #f0f0f0;
-  }
-  
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  background-color: #f9f9f9;
+}
+
+.dashboard-div {
+  margin-top: 12vh;
+  height: 80%;
+  width: 80%;
+  background-color: white; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-list {
+  padding: 20px;
+  padding-top: 10px;
+  max-height: calc(100% - 50px); 
+  overflow-y: auto;
+}
+
+.scrollable-list {
+  max-height: 100%; 
+  overflow-y: auto;
+}
+
+.scrollable-list button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #043c6c; 
+  border-radius: 5px;
+  background-color: #043c6c; 
+  color: #eee; 
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.scrollable-list button:hover {
+  background-color: #086bbf;
+  border-color: #086bbf;
+  color: #043c6c; 
+}
+
+.initials {
+  font-size: 1.2em;
+  margin-right: 10px;
+  font-weight: bold;
+  text-transform: uppercase; 
+  color: #043c6c;
+  background-color: #fff;
+  border-radius: 50%; 
+  padding: 5px;
+  width: 40px; 
+  height: 40px;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+}
+
+.admin-search-bar {
+  width: calc(100% - 22px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: black;
+  margin: 10px;
+}
+
+.dashboard-title {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  background-color: #043c6c;
+  color: #eee;
+  padding: 10px;
+  border: 5px solid #043c6c;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.user-list {
+  list-style: none;
+  padding: 0;
+}

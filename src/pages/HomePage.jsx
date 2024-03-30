@@ -1,63 +1,26 @@
-import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import createIcon from '../assets/icons/hp-create.png'
-import addSquare from '../assets/icons/hp-add-square.svg'
-import viewIcon from '../assets/icons/hp-view.png'
-import viewSquare from '../assets/icons/hp-view-icon.svg'
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import CreateReportCard from '../components/ReplitCreateCard';
+import ViewReportCard from '../components/ViewReportCard';
 
+// API
+import { loggedIn } from '../api/Client';
 
 // Testing
-export const HomePage = () => {
-    const navigate = useNavigate();
-    function CreateReportHandler() {
-      navigate('/create')
-    }
+export const HomePage = function () {
+  const navigate = useNavigate();
+  useEffect(() => {
+    loggedIn(navigate);
+  }, []);
 
-    function ViewReportHandler() {
-        navigate('/view-reports')
-    }
-
-    function RepitCreateCard() {
-      return (
-        <div className='flex flex-col w-56 h-56 border-2 rounded-2xl justify-center items-center text-white font-bold font-inter my-2 bg-ui-background shadow-sm'>
-          <div className='mx-6'>
-              <img src={createIcon}/>
-          </div>
-
-            <button name='create' onClick={CreateReportHandler} className='bg-bcit-blue flex items-center rounded-md shadow-2xl mt-2 w-5/6 h-7 font-inter-thin text-xs hover:bg-red-400'>
-                <img className='w-6 ml-1' src={addSquare}/>
-                <div className='pl-12'>
-                    REPIT
-                </div>
-            </button>
-        </div>
-      )
-    }
-
-    function ViewReportCard() {
-        return (
-            <div className='flex flex-col w-56 h-56 border-2 rounded-2xl justify-center items-center text-white font-inter-thin my-2 bg-ui-background shadow-sm'>
-                <div className='mx-6'>
-                    <img src={viewIcon}/>
-                </div>
-                <button name='view' onClick={ViewReportHandler} className='bg-bcit-blue flex items-center rounded-md shadow-2xl mt-2 w-5/6 h-7 font-inter-thin text-xs'>
-                    <img className='w-5 ml-2' src={viewSquare}/>
-                    <div className=' pl-5'>
-                        VIEW MY POSTS
-                    </div>
-                </button>
-            </div>
-          )
-    }
-
-
-    return (
-    
-      <div className=''>
-          <div className='flex flex-col items-center w-screen h-screen pt-20 bg-background'>
-             <RepitCreateCard/>
-             <ViewReportCard/>
-          </div> 
+  return (
+    <div className=''>
+      <div className='flex flex-col items-center w-screen h-screen pt-20 bg-background'>
+        <CreateReportCard />
+        <ViewReportCard />
       </div>
-  )
-}
+    </div>
+  );
+};
+
+export default HomePage;

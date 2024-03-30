@@ -1,9 +1,9 @@
-describe('Login Page', () => {
+describe('Login student', () => {
   const base_url = Cypress.env("CYPRESS_BASE_URL")
-  // Create a before each to redirect to visit base_url, unauthenticated should redirect back
 
-  it('successfully logs in the user', () => {
+  it('successfully logs in the regular user', () => {
     cy.visit(base_url + '/login');
+    cy.url().should('include', '/login')
     const email = Cypress.env("CYPRESS_REGULAR_EMAIL");
     const password = Cypress.env("CYPRESS_REGULAR_PASSWORD")
 
@@ -12,7 +12,10 @@ describe('Login Page', () => {
 
     cy.get('button.lp-button').click();
 
-    cy.url().should('include', '/');
+    cy.url().should('eq', base_url + '/');
+    cy.get('div[name="dropdown"]').click();
+    cy.get('button[name="adminButton"]').should('not.exist');
   });
   
 });
+

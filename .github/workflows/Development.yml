@@ -21,15 +21,24 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
+<<<<<<< HEAD
 (Unit + Integration)
+=======
+>>>>>>> dev
 
   test:
     needs: cypress
     runs-on: ubuntu-latest
     env:
       CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}
-      CYPRESS_REGULAR_EMAIL: ${{ secrets.REGULAR_EMAIL }}
+      CYPRESS_API_URL: ${{ secrets.CYPRESS_API_URL }}
+      CYPRESS_REGULAR_EMAIL: ${{ secrets.CYPRESS_REGULAR_EMAIL }}
       CYPRESS_REGULAR_PASSWORD: ${{ secrets.CYPRESS_REGULAR_PASSWORD }}
+      CYPRESS_ADMIN_EMAIL: ${{ secrets.CYPRESS_ADMIN_EMAIL }}
+      CYPRESS_ADMIN_PASSWORD: ${{ secrets.CYPRESS_ADMIN_PASSWORD }}
+      NODE_ENV: ${{ secrets.NODE_ENV }}
+      VITE_API_ENDPOINT: ${{ secrets.VITE_API_ENDPOINT }}
+      
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -46,4 +55,11 @@ jobs:
         run: npm install
 
       - name: Test (E2E)
+<<<<<<< HEAD
         run: npm run cypress:test
+=======
+        run: npm run test:e2e:ci
+
+      - name: Test (Components)
+        run: npm run cypress:component
+>>>>>>> dev

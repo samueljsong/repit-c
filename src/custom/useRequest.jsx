@@ -1,33 +1,33 @@
-import { useCookies } from "react-cookie";
+import { useCookies } from 'react-cookie';
 
 const useRequest = () => {
-  const [, , removeCookie] = useCookies(["user"]);
+  const [, , removeCookie] = useCookies(['user']);
 
   const getConfig = (method, body) => {
     const config = {
       method: method,
-      mode: "cors",
+      mode: 'cors',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      credentials: "include",
+      credentials: 'include',
       body: JSON.stringify(body),
     };
     return config;
   };
 
   const logOutRequest = async () => {
-    const { success } = await postRequest("auth/logout");
+    const { success } = await postRequest('auth/logout');
     if (success) {
-      removeCookie("session");
-      removeCookie("user");
-      window.location.href = "/";
+      removeCookie('session');
+      removeCookie('user');
+      window.location.href = '/';
     }
   };
 
   const logInRequest = async (credentials) => {
     try {
-      const endpoint = "auth/login";
+      const endpoint = 'auth/login';
       const response = await postRequest(endpoint, credentials);
       if (response.success) {
         return response;
@@ -45,7 +45,7 @@ const useRequest = () => {
   const deleteRequest = async (endpoint, body = undefined) => {
     try {
       const url = urlConstructor(endpoint);
-      const response = await fetch(url, getConfig("DELETE", body));
+      const response = await fetch(url, getConfig('DELETE', body));
       if (response.status === 200) {
         return true;
       }
@@ -53,7 +53,7 @@ const useRequest = () => {
         return false;
       }
       if (response.status === 401) {
-        window.location.href = "/login";
+        window.location.href = '/login';
         return;
       }
       if (response.status === 403) {
@@ -70,17 +70,17 @@ const useRequest = () => {
   const patchRequest = async (endpoint, body = undefined) => {
     try {
       const url = urlConstructor(endpoint);
-      const response = await fetch(url, getConfig("PATCH", body));
+      const response = await fetch(url, getConfig('PATCH', body));
       if (response.status === 200) {
         const data = await response.json();
         return data;
       }
       if (response.status === 404) {
-        window.location.href = "/404";
+        window.location.href = '/404';
         return;
       }
       if (response.status === 401) {
-        window.location.href = "/login";
+        window.location.href = '/login';
         return;
       }
       if (response.status === 403) {
@@ -97,17 +97,17 @@ const useRequest = () => {
   const getRequest = async (endpoint, body = undefined) => {
     try {
       const url = urlConstructor(endpoint);
-      const response = await fetch(url, getConfig("GET", body));
+      const response = await fetch(url, getConfig('GET', body));
       if (response.status === 200) {
         const data = await response.json();
         return data;
       }
       if (response.status === 404) {
-        window.location.href = "/404";
+        window.location.href = '/404';
         return;
       }
       if (response.status === 401) {
-        window.location.href = "/login";
+        window.location.href = '/login';
         return;
       }
       if (response.status === 403) {
@@ -124,17 +124,17 @@ const useRequest = () => {
   const postRequest = async (endpoint, body = undefined) => {
     try {
       const url = urlConstructor(endpoint);
-      const response = await fetch(url, getConfig("POST", body));
+      const response = await fetch(url, getConfig('POST', body));
       if (response.status === 200) {
         const data = await response.json();
         return data;
       }
       if (response.status === 404) {
-        window.location.href = "/404";
+        window.location.href = '/404';
         return;
       }
       if (response.status === 401) {
-        window.location.href = "/login";
+        window.location.href = '/login';
         return;
       }
       if (response.status === 403) {

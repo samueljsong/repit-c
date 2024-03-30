@@ -1,8 +1,10 @@
 describe('Regular User going to Create page', () => {
   it('successfully redirects to create report page', () => {
-    cy.visit('http://localhost:5173');
+    const base_url = Cypress.env("CYPRESS_BASE_URL");
+    
+    cy.loginRegular();
 
-    cy.get('button[name="create"]').click();
+    cy.get('div[name="create"]').click();
 
     cy.url().should('include', '/create');
     cy.go('back');
