@@ -26,6 +26,23 @@ export const loggedIn = (navigate) => {
         });
 };
 
+export const isNewUser = (navigate) => {
+    return client.get('/user/isNewUser')
+        .then(response => {
+            console.log(response.data)
+            if (response.data){
+                navigate('/tutorial')
+                return Promise.resolve(response.data)
+            } else {
+                navigate('/')
+                return Promise.resolve(response.data)
+            }
+        })
+        .catch(error => {
+            console.error('Error checking isNewUser: ', error);
+        })
+}
+
 export const logout = (navigate) => {
     client.get('/auth/logout')
         .then(() => {
@@ -108,4 +125,14 @@ export const updateReportStateAdmin = (reportId, state) => {
             console.error('Error updating user report state:', error);
             return Promise.reject(error);
         });
+}
+
+export const updateNewUser = () => {
+    return client.patch('/user/updateNewUser')
+        .then(response => {
+            console.log(response)
+        })
+        .catch(error => {
+            console.error('Error updating newUser:', error);
+        })
 }

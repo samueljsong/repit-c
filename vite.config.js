@@ -6,7 +6,7 @@ export default defineConfig({
     plugins: [
       react(),
       // Only instrument code for coverage in testing environments
-      process.env.NODE_ENV === 'development' && istanbul({
+      istanbul({
         include: 'src/**', // Instrument only files in the src/ directory
         exclude: ['node_modules', 'test/', '**/*.test.js', '**/*.spec.js'],
         extension: ['.js', '.jsx'], // Include JS and JSX files

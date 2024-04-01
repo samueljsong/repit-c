@@ -13,7 +13,7 @@ describe('Regular User redirecting to Create and View pages', () => {
     });
 
     it('successfully redirects to create report page', () => {    
-        cy.get('div[name="create"]').click();
+        cy.get('button[name="create"]').click();
 
         cy.url().should('include', '/create');
         });

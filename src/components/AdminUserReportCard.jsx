@@ -18,13 +18,15 @@ export const AdminUserReportCard = (props) => {
 
   const [report, setReport] = useState([]);
   const [location, setLocation] = useState([]);
+  const [option, setOption] = useState();
+  const [showImage, setShowImage] = useState(false);
 
   AdminUserReportCard.propTypes = {
     reportId: PropTypes.string.isRequired,
   };
 
   const handleSubmit = () => {
-    if (option == undefined) {
+    if (option === undefined) {
       navigate(-1);
     } else {
       updateReportState(props.reportId, option);
@@ -34,54 +36,52 @@ export const AdminUserReportCard = (props) => {
 
   useEffect(() => {
     const getData = async () => {
-      await getAdminUserReport(props.reportId)
-        .then((response) => {
-          setReport(response);
-          console.log(response);
-          getLocationByIdAdmin(response.location_tag_id)
-            .then((response) => {
-              setLocation(response);
-              console.log(response);
-            })
-            .catch((error) => console.error('Error fetching location:', error));
-        })
-        .catch((error) => console.error('Error fetching users reports:', error));
+      try {
+        const reportData = await getAdminUserReport(props.reportId);
+        setReport(reportData);
+        console.log(reportData);
+        const locationData = await getLocationByIdAdmin(reportData.location_tag_id);
+        setLocation(locationData);
+        console.log(locationData);
+      } catch (error) {
+        console.error('Error fetching report and location:', error);
+      }
     };
 
     getData();
   }, []);
 
-  const [option, setOption] = useState();
-
-  const [showImage, setShowImage] = useState(false);
   const handleOnClose = () => setShowImage(false);
 
   return (
-    <div className='grid h-screen w-full place-items-center bg-background'>
-      <div className='max-w-sm bg-white border border-gray-200 rounded-lg shadow mt-[10vh]'>
-        <div className='p-5 shadow-lg'>
-          <div className='mb-1'>
+    <div className='grid h-screen w-full place-items-center bg-background' name='whole-page-container'>
+      <div className='max-w-sm bg-white border border-gray-200 rounded-lg shadow mt-[10vh]' name='report-page-container'>
+        <div className='p-5 shadow-lg' name='report-container'>
+          <div className='mb-1' name='title-container'>
             <p className='font-normal text-gray-700 pl-[10px]'>Title</p>
             <input
               type='text'
+              name='title-input'
               value={report.title}
               disabled
               className='bg-[#D9D9D9] w-[300px] p-[10px] text-[#333] rounded'
             ></input>
           </div>
-          <div className='mb-1'>
+          <div className='mb-1' name='location-container'>
             <p className='font-normal text-gray-700 pl-[10px]'>Location</p>
             <input
               type='text'
+              name='location-input'
               value={location.building}
               disabled
               className='bg-[#D9D9D9] w-[300px] p-[10px] text-[#333] rounded'
             ></input>
           </div>
-          <div className='mb-1'>
+          <div className='mb-1' name='description-container'>
             <p className='font-normal text-gray-700 pl-[10px]'>Description of Problem</p>
             <textarea
               type='text'
+              name='description-input'
               value={report.description}
               disabled
               className='bg-[#D9D9D9] h-[129px] w-[300px] resize-none p-[10px] text-[#333] rounded'
@@ -96,34 +96,10 @@ export const AdminUserReportCard = (props) => {
                   className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm px-3 py-1.5 text-center inline-flex items-center'
                   onChange={(e) => setOption(e.target.value)}
                 >
-                  {report.status_id == 1 ? (
-                    <option value={1} selected>
-                      Unread 🟠
-                    </option>
-                  ) : (
-                    <option value={1}>Unread 🟠</option>
-                  )}
-                  {report.status_id == 2 ? (
-                    <option value={2} selected>
-                      Resolved 🟢
-                    </option>
-                  ) : (
-                    <option value={2}>Resolved 🟢</option>
-                  )}
-                  {report.status_id == 3 ? (
-                    <option value={3} selected>
-                      Rejected 🔴
-                    </option>
-                  ) : (
-                    <option value={3}>Rejected 🔴</option>
-                  )}
-                  {report.status_id == 4 ? (
-                    <option value={4} selected>
-                      In-Progress 🔵
-                    </option>
-                  ) : (
-                    <option value={4}>In-Progress 🔵</option>
-                  )}
+                  <option value={1} selected={report.status_id === 1}>Unread 🟠</option>
+                  <option value={2} selected={report.status_id === 2}>Resolved 🟢</option>
+                  <option value={3} selected={report.status_id === 3}>Rejected 🔴</option>
+                  <option value={4} selected={report.status_id === 4}>In-Progress 🔵</option>
                 </select>
               </label>
             </div>

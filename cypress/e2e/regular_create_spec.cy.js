@@ -4,7 +4,7 @@ describe('Regular User going to Create page', () => {
     
     cy.loginRegular();
 
-    cy.get('div[name="create"]').click();
+    cy.get('button[name="create"]').click();
 
     cy.url().should('include', '/create');
     cy.go('back');

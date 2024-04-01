@@ -9,12 +9,20 @@ import { useNavigate } from 'react-router-dom';
 //Images
 import photos from '../assets/blue-photos.svg';
 
+//API
+import { updateNewUser } from '../api/Client';
+
 export const Warning = () => {
   const navigate = useNavigate();
 
-  const onStartClickHandler = () => {
-    navigate('/');
-  };
+  // const onStartClickHandler = () => {
+  //   navigate('/');
+  // };
+
+  const onButtonClickHandler = () => {
+    updateNewUser();
+    navigate('/')
+  }
 
   return (
     <motion.div
@@ -36,7 +44,7 @@ export const Warning = () => {
       <motion.button
         name='complete'
         className='t1-btn'
-        onClick={onStartClickHandler}
+        onClick={onButtonClickHandler}
         whileHover={{
           size: 1.2,
         }}
