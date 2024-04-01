@@ -11,24 +11,26 @@ function RepitCreateCard() {
   }
 
   return (
-    <button
-      name='create'
-      onClick={CreateReportHandler}
-      type='button' // Add explicit type attribute
-      className='flex flex-col w-56 h-56 border-2 rounded-2xl justify-center items-center text-white font-bold font-inter my-2 bg-ui-background shadow-sm hover:cursor-pointer'
-    >
-      <div className='mx-6'>
-        <img src={createIcon} alt='Create Icon' />
-      </div>
-
+    <>
       <button
-        type='button' // Remove redundant role attribute
-        className='bg-bcit-blue flex items-center rounded-md shadow-2xl mt-2 w-5/6 h-7 font-inter-thin text-xs'
+        name='create'
+        onClick={CreateReportHandler}
+        type='button' // Add explicit type attribute
+        className='flex flex-col w-56 h-56 border-2 rounded-2xl justify-center items-center text-white font-bold font-inter my-2 bg-ui-background shadow-sm hover:cursor-pointer'
       >
-        <img className='w-6 ml-1' src={addSquare} alt='Add Square Icon' />
-        <div className='pl-16'>REPIT</div>
+        <div className='mx-6'>
+          <img src={createIcon} alt='Create Icon' />
+        </div>
+
+        <div
+          type='button' // Remove redundant role attribute
+          className='bg-bcit-blue flex items-center rounded-md shadow-2xl mt-2 w-5/6 h-7 font-inter-thin text-xs'
+        >
+          <img className='w-6 ml-1' src={addSquare} alt='Add Square Icon' />
+          <div className='pl-16'>REPIT</div>
+        </div>
       </button>
-    </button>
+    </>
   );
 }
 
