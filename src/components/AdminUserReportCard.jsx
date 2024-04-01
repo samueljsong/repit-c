@@ -57,31 +57,34 @@ export const AdminUserReportCard = (props) => {
   const handleOnClose = () => setShowImage(false);
 
   return (
-    <div className='grid h-screen w-full place-items-center bg-background'>
-      <div className='max-w-sm bg-white border border-gray-200 rounded-lg shadow mt-[10vh]'>
-        <div className='p-5 shadow-lg'>
-          <div className='mb-1'>
+    <div className='grid h-screen w-full place-items-center bg-background' name='whole-page-container'>
+      <div className='max-w-sm bg-white border border-gray-200 rounded-lg shadow mt-[10vh]' name='report-page-container'>
+        <div className='p-5 shadow-lg' name='report-container'>
+          <div className='mb-1' name='title-container'>
             <p className='font-normal text-gray-700 pl-[10px]'>Title</p>
             <input
               type='text'
+              name='title-input'
               value={report.title}
               disabled
               className='bg-[#D9D9D9] w-[300px] p-[10px] text-[#333] rounded'
             ></input>
           </div>
-          <div className='mb-1'>
+          <div className='mb-1' name='location-container'>
             <p className='font-normal text-gray-700 pl-[10px]'>Location</p>
             <input
               type='text'
+              name='location-input'
               value={location.building}
               disabled
               className='bg-[#D9D9D9] w-[300px] p-[10px] text-[#333] rounded'
             ></input>
           </div>
-          <div className='mb-1'>
+          <div className='mb-1' name='description-container'>
             <p className='font-normal text-gray-700 pl-[10px]'>Description of Problem</p>
             <textarea
               type='text'
+              name='description-input'
               value={report.description}
               disabled
               className='bg-[#D9D9D9] h-[129px] w-[300px] resize-none p-[10px] text-[#333] rounded'

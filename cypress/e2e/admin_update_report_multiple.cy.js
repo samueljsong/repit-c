@@ -10,7 +10,7 @@ describe('An admin updates reports with different status values', () => {
   
         cy.visit(`${baseUrl}/AdminDashboard`);
   
-        cy.get('button[name="15"]').click();
+        cy.get('button[name="19"]').click();
         cy.wait(1000); 
   
         cy.get('.button-report').first().click({ force: true });
