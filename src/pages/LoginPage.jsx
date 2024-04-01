@@ -15,7 +15,7 @@ import lock from '../assets/icons/lock.png';
 import createToast from '../components/CreateToast';
 
 // API
-import { client } from '../api/Client';
+import { client, isNewUser } from '../api/Client';
 
 function LoginPage() {
   const { failToast } = createToast();
@@ -53,7 +53,7 @@ function LoginPage() {
       })
       .then((json) => {
         if (json.data.statusCode === 200) {
-          navigate('/');
+          isNewUser(navigate)
         }
       })
       .catch(() => {
