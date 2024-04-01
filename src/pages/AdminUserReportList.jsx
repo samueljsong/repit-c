@@ -22,6 +22,14 @@ const useAdminOnly = () => {
   return null;
 };
 
+function truncateTitle(title, maxLength) {
+  if (title.length <= maxLength) {
+    return title;
+  } else {
+    return title.slice(0, maxLength) + '...';
+  }
+}
+
 function AdminUserReportList() {
   useAdminOnly();
 
@@ -35,7 +43,6 @@ function AdminUserReportList() {
       .then((response) => {
         setReports(response);
       })
-      // eslint-disable-next-line no-console
       .catch(() => console.log('Error fetching reports'));
   }, []);
 
@@ -44,8 +51,8 @@ function AdminUserReportList() {
   };
 
   return (
-    <div className='h-[100vh] w-full grid place-items-center bg-[#f9f9f9]'>
-      <div className='dashboard-div mt-[12vh] h-[80%] w-[80%] bg-white shadow-'>
+    <div name='page-container' className='h-screen w-full grid place-items-center bg-gray-200'>
+      <div className='dashboard-div mt-12vh bg-white shadow'>
         <h2 name='title' className='dashboard-title'>
           List of Reports
         </h2>
@@ -53,9 +60,13 @@ function AdminUserReportList() {
           <div className='scrollable-list'>
             <ul className='user-list'>
               {reports.map((report) => (
-                <button className='button-report' key={report.report_id} type='button' onClick={() => handleClick(report.report_id)}>
-                  {' '}
-                  {report.title}
+                <button
+                  className='button-report max-w-md text-overflow-ellipsis whitespace-normal'
+                  key={report.report_id}
+                  type='button'
+                  onClick={() => handleClick(report.report_id)}
+                >
+                  {truncateTitle(report.title, 25)}
                 </button>
               ))}
             </ul>
