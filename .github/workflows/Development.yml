@@ -5,8 +5,10 @@ on:
     branches: dev
 
 jobs:
-  cypress:
+  test:
     runs-on: ubuntu-latest
+    env:
+      VITE_API_ENDPOINT: ${{ secrets.VITE_API_ENDPOINT }}
 
     steps:
       - name: Checkout
@@ -19,23 +21,18 @@ jobs:
 
       - name: 'install npm@latest'
         run: npm i -g npm@latest
-        
 
       - name: Install Dependencies
         run: npm install
 
-      - name: Start Server
-        run: npm run start:test & # Start your server in the background
-        
+      - name: Create cypress env file
+        uses: jsdaniell/create-json@v1.2.3
+        with:
+          name: cypress.env.json
+          json: '{ "CYPRESS_BASE_URL": "${{ secrets.CYPRESS_BASE_URL }}", "CYPRESS_API_URL": "${{ secrets.VITE_API_ENDPOINT }}", "CYPRESS_REGULAR_EMAIL": "${{ secrets.CYPRESS_REGULAR_EMAIL }}", "CYPRESS_REGULAR_PASSWORD": "${{ secrets.CYPRESS_REGULAR_PASSWORD }}", "CYPRESS_ADMIN_EMAIL": "${{ secrets.CYPRESS_ADMIN_EMAIL }}", "CYPRESS_ADMIN_PASSWORD": "${{ secrets.CYPRESS_ADMIN_PASSWORD }}" }'
+
       - name: Test (E2E)
-        uses: cypress-io/github-action@v6
-        env:
-            CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}
-            CYPRESS_API_URL: ${{ secrets.CYPRESS_API_URL }}
-            CYPRESS_REGULAR_EMAIL: ${{ secrets.CYPRESS_REGULAR_EMAIL }}
-            CYPRESS_REGULAR_PASSWORD: ${{ secrets.CYPRESS_REGULAR_PASSWORD }}
-            CYPRESS_ADMIN_EMAIL: ${{ secrets.CYPRESS_ADMIN_EMAIL }}
-            CYPRESS_ADMIN_PASSWORD: ${{ secrets.CYPRESS_ADMIN_PASSWORD }}
+        run: npm run cypress:e2e:ci
 
       - name: Test (Components)
         run: npm run cypress:component
