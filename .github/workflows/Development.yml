@@ -7,15 +7,6 @@ on:
 jobs:
   cypress:
     runs-on: ubuntu-latest
-    env:
-      CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}
-      CYPRESS_API_URL: ${{ secrets.CYPRESS_API_URL }}
-      CYPRESS_REGULAR_EMAIL: ${{ secrets.CYPRESS_REGULAR_EMAIL }}
-      CYPRESS_REGULAR_PASSWORD: ${{ secrets.CYPRESS_REGULAR_PASSWORD }}
-      CYPRESS_ADMIN_EMAIL: ${{ secrets.CYPRESS_ADMIN_EMAIL }}
-      CYPRESS_ADMIN_PASSWORD: ${{ secrets.CYPRESS_ADMIN_PASSWORD }}
-      NODE_ENV: ${{ secrets.NODE_ENV }}
-      VITE_API_ENDPOINT: ${{ secrets.VITE_API_ENDPOINT }}
 
     steps:
       - name: Checkout
@@ -37,7 +28,14 @@ jobs:
         run: npm run start:test & # Start your server in the background
         
       - name: Test (E2E)
-        run: npm run cypress:e2e:ci
+        uses: cypress-io/github-action@v6
+        env:
+            CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}
+            CYPRESS_API_URL: ${{ secrets.CYPRESS_API_URL }}
+            CYPRESS_REGULAR_EMAIL: ${{ secrets.CYPRESS_REGULAR_EMAIL }}
+            CYPRESS_REGULAR_PASSWORD: ${{ secrets.CYPRESS_REGULAR_PASSWORD }}
+            CYPRESS_ADMIN_EMAIL: ${{ secrets.CYPRESS_ADMIN_EMAIL }}
+            CYPRESS_ADMIN_PASSWORD: ${{ secrets.CYPRESS_ADMIN_PASSWORD }}
 
       - name: Test (Components)
         run: npm run cypress:component
