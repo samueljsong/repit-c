@@ -19,6 +19,7 @@
     "test:e2e:ci": "concurrently \"wait-on http://localhost:5173 && npm run cypress:e2e:ci\" \"npm run start:test\""
   },
   "dependencies": {
+    "@testing-library/react": "^14.2.2",
     "axios": "^1.6.7",
     "babel-plugin-istanbul": "^6.1.1",
     "dotenv": "^16.4.5",
