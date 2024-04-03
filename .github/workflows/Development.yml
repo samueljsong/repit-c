@@ -5,28 +5,10 @@ on:
     branches: dev
 
 jobs:
-  cypress:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20.10.0
-
-      - name: 'install npm@latest'
-        run: npm i -g npm@latest
-
-      - name: Install Dependencies
-        run: npm install
-
-  test:
-    needs: cypress
+  start-server-and-test:
     runs-on: ubuntu-latest
     env:
-      CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}
+      CYPRESS_BASE_URL: http://localhost:3000 # Assuming your server runs on port 3000
       CYPRESS_API_URL: ${{ secrets.CYPRESS_API_URL }}
       CYPRESS_REGULAR_EMAIL: ${{ secrets.CYPRESS_REGULAR_EMAIL }}
       CYPRESS_REGULAR_PASSWORD: ${{ secrets.CYPRESS_REGULAR_PASSWORD }}
@@ -34,7 +16,7 @@ jobs:
       CYPRESS_ADMIN_PASSWORD: ${{ secrets.CYPRESS_ADMIN_PASSWORD }}
       NODE_ENV: ${{ secrets.NODE_ENV }}
       VITE_API_ENDPOINT: ${{ secrets.VITE_API_ENDPOINT }}
-      
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -50,8 +32,26 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Start Server
+        run: npm run start:test & # Start your server in the background
+
+      - name: Wait for Server to Start
+        run: |
+          timeout=120
+          while [[ "$timeout" -gt 0 ]]; do
+            if curl -s -o /dev/null $CYPRESS_BASE_URL; then
+              break
+            fi
+            sleep 5
+            ((timeout-=5))
+          done
+          if [[ "$timeout" -eq 0 ]]; then
+            echo "Server did not start within the specified timeout"
+            exit 1
+          fi
+
       - name: Test (Components)
         run: npm run cypress:component
 
       - name: Test (E2E)
-        run: npm run test:e2e:ci
+        run: npm run cypress:e2e:ci
