@@ -1,7 +1,7 @@
 describe('Login student', () => {
     const base_url = "https://bcrepit.netlify.app" //Cypress.env("CYPRESS_BASE_URL")
-    const email = "wnguyen16@my.bcit.ca" // Cypress.env("CYPRESS_ADMIN_EMAIL");
-    const password = "1234" //Cypress.env("CYPRESS_ADMIN_PASSWORD")
+    const email = "user@my.bcit.ca"
+    const password = "asd"
     const numIterations = 10;
   
     it('successfully logs in the regular user and monitors memory', () => {
