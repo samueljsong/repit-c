@@ -50,8 +50,8 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Test (E2E)
-        run: npm run test:e2e:ci
-
       - name: Test (Components)
         run: npm run cypress:component
+
+      - name: Test (E2E)
+        run: npm run test:e2e:ci
