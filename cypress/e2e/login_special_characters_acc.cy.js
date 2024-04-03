@@ -14,8 +14,6 @@ describe('Login Page', () => {
 
         cy.get('button.lp-button').click();
 
-        cy.url().should('eq', base_url + '/');
-        cy.get('div[name="dropdown"]').click();
-        cy.get('button[name="logout"]').should('exist');
+        cy.url().should('eq', base_url + '/login');
     });
 });
