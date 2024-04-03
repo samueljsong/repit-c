@@ -2,7 +2,7 @@ name: Development
 
 on:
   push:
-    branches: dev
+    branches: ci-testing
 
 jobs:
   cypress:
@@ -25,16 +25,16 @@ jobs:
   test:
     needs: cypress
     runs-on: ubuntu-latest
-    env:
-      CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}
-      CYPRESS_API_URL: ${{ secrets.CYPRESS_API_URL }}
-      CYPRESS_REGULAR_EMAIL: ${{ secrets.CYPRESS_REGULAR_EMAIL }}
-      CYPRESS_REGULAR_PASSWORD: ${{ secrets.CYPRESS_REGULAR_PASSWORD }}
-      CYPRESS_ADMIN_EMAIL: ${{ secrets.CYPRESS_ADMIN_EMAIL }}
-      CYPRESS_ADMIN_PASSWORD: ${{ secrets.CYPRESS_ADMIN_PASSWORD }}
-      NODE_ENV: ${{ secrets.NODE_ENV }}
-      VITE_API_ENDPOINT: ${{ secrets.VITE_API_ENDPOINT }}
-      
+    # env:
+    #   CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}
+    #   CYPRESS_API_URL: ${{ secrets.CYPRESS_API_URL }}
+    #   CYPRESS_REGULAR_EMAIL: ${{ secrets.CYPRESS_REGULAR_EMAIL }}
+    #   CYPRESS_REGULAR_PASSWORD: ${{ secrets.CYPRESS_REGULAR_PASSWORD }}
+    #   CYPRESS_ADMIN_EMAIL: ${{ secrets.CYPRESS_ADMIN_EMAIL }}
+    #   CYPRESS_ADMIN_PASSWORD: ${{ secrets.CYPRESS_ADMIN_PASSWORD }}
+    #   NODE_ENV: ${{ secrets.NODE_ENV }}
+    #   VITE_API_ENDPOINT: ${{ secrets.VITE_API_ENDPOINT }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -51,7 +51,29 @@ jobs:
         run: npm install
 
       - name: Test (E2E)
-        run: npm run test:e2e:ci
+        uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+          wait-on: ${{ secrets.CYPRESS_BASE_URL }}, ${{ secrets.CYPRESS_API_URL }}
+        env:
+          CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}
+          CYPRESS_API_URL: ${{ secrets.CYPRESS_API_URL }}
+          CYPRESS_REGULAR_EMAIL: ${{ secrets.CYPRESS_REGULAR_EMAIL }}
+          CYPRESS_REGULAR_PASSWORD: ${{ secrets.CYPRESS_REGULAR_PASSWORD }}
+          CYPRESS_ADMIN_EMAIL: ${{ secrets.CYPRESS_ADMIN_EMAIL }}
+          CYPRESS_ADMIN_PASSWORD: ${{ secrets.CYPRESS_ADMIN_PASSWORD }}
 
       - name: Test (Components)
-        run: npm run cypress:component
+        uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+          install: false
+          component: true
+          wait-on: ${{ secrets.CYPRESS_BASE_URL }}, ${{ secrets.CYPRESS_API_URL }}
+        env:
+          CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}
+          CYPRESS_API_URL: ${{ secrets.CYPRESS_API_URL }}
+          CYPRESS_REGULAR_EMAIL: ${{ secrets.CYPRESS_REGULAR_EMAIL }}
+          CYPRESS_REGULAR_PASSWORD: ${{ secrets.CYPRESS_REGULAR_PASSWORD }}
+          CYPRESS_ADMIN_EMAIL: ${{ secrets.CYPRESS_ADMIN_EMAIL }}
+          CYPRESS_ADMIN_PASSWORD: ${{ secrets.CYPRESS_ADMIN_PASSWORD }}
