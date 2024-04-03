@@ -1,5 +1,5 @@
 describe('Login Page Functionality', () => {
-    const base_url = Cypress.env("CYPRESS_BASE_URL");
+    const base_url = "https://bcrepit.netlify.app" //Cypress.env("CYPRESS_BASE_URL")
 
     beforeEach(() => {
         cy.visit(base_url + '/login');
@@ -23,8 +23,7 @@ describe('Login Page Functionality', () => {
     });
 
     it('displays error message for invalid credentials', () => {
-        const email = Cypress.env("CYPRESS_ADMIN_EMAIL");
-        const password = 'invalidpassword';
+        const email = "wnguyen16@my.bcit.ca" // Cypress.env("CYPRESS_ADMIN_EMAIL");
     
         cy.get('input[name="email"]').type(email);
         cy.get('input[name="password"]').type(password);
@@ -51,8 +50,8 @@ describe('Login Page Functionality', () => {
             }
         }).as('login');
 
-        const email = Cypress.env("CYPRESS_ADMIN_EMAIL");
-        const password = Cypress.env("CYPRESS_ADMIN_PASSWORD")
+        const email = "wnguyen16@my.bcit.ca" // Cypress.env("CYPRESS_ADMIN_EMAIL");
+        const password = "1234" //Cypress.env("CYPRESS_ADMIN_PASSWORD")
     
         cy.get('input[name="email"]').type(email);
         cy.get('input[name="password"]').type(password);
@@ -66,7 +65,7 @@ describe('Login Page Functionality', () => {
     it('displays error message for network error during login', () => {
         cy.intercept('POST', 'api/auth/me').as('login');
 
-        const email = Cypress.env("CYPRESS_ADMIN_EMAIL");
+        const email = "wnguyen16@my.bcit.ca" // Cypress.env("CYPRESS_ADMIN_EMAIL");
         const password = "try again later"
     
         cy.get('input[name="email"]').type(email);

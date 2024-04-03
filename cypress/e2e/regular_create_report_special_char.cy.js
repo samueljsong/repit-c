@@ -1,6 +1,7 @@
 describe('A user creates a report', () => { 
     it('successfully creates a report', () => {
-        const base_url = Cypress.env("CYPRESS_BASE_URL");
+        const base_url = "https://bcrepit.netlify.app" //Cypress.env("CYPRESS_BASE_URL")
+
         cy.loginRegular();
         cy.visit(base_url + "/create")
         cy.get('input[name="title"]').type('~`!@#$%^&*()_=?<>{}[]|//~,.;');

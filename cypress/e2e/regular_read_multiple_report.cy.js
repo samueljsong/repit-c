@@ -2,7 +2,7 @@ describe('A user views reports multiple times', () => {
     const numIterations = 15; // Number of times to run the test
   
     it(`successfully views reports ${numIterations} times and performs reliability testing`, () => {
-      const baseUrl = Cypress.env('CYPRESS_BASE_URL');
+        const baseUrl = "https://bcrepit.netlify.app" //Cypress.env("CYPRESS_BASE_URL")
   
       for (let i = 0; i < numIterations; i++) {
         cy.loginRegular();

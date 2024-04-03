@@ -1,9 +1,9 @@
 describe('An admin updates reports with different status values', () => {
     const numIterations = 5; 
     let statusCounter = 1; 
-  
+    const baseUrl = "https://bcrepit.netlify.app" //Cypress.env("CYPRESS_BASE_URL")
+    
     it(`successfully updates reports ${numIterations} times with different status values and performs reliability testing`, () => {
-      const baseUrl = "https://bcrepit.netlify.app" //Cypress.env("CYPRESS_BASE_URL")
     
       for (let i = 0; i < numIterations; i++) {
         cy.loginAdmin();

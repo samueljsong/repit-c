@@ -1,6 +1,6 @@
 describe('Login Page', () => {
-    const base_url = Cypress.env("CYPRESS_BASE_URL");
-    const email = Cypress.env("CYPRESS_ADMIN_EMAIL");
+    const base_url = "https://bcrepit.netlify.app" //Cypress.env("CYPRESS_BASE_URL")
+    const email = "wnguyen16@my.bcit.ca" // Cypress.env("CYPRESS_ADMIN_EMAIL");
 
     beforeEach(() => {
         cy.visit(base_url + '/login');

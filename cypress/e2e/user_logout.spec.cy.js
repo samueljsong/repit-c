@@ -1,6 +1,5 @@
 describe('Logging User Out', () => {
-    const base_url = Cypress.env("CYPRESS_BASE_URL")
-    const api_url = Cypress.env("CYPRESS_API_URL")
+    const base_url = "https://bcrepit.netlify.app" //Cypress.env("CYPRESS_BASE_URL")
   
     it('successfully logs out the user', () => {
       cy.loginRegular();
@@ -8,7 +7,7 @@ describe('Logging User Out', () => {
       cy.get('div[name="dropdown"]').click();
       cy.get("button[name='logout']").click({force: true});
 
-      cy.url().should('include', '/login');
+      cy.url().should('eq', base_url + '/login');
     });
     
   });

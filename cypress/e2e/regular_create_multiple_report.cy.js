@@ -2,7 +2,7 @@ describe('A user creates multiple reports', () => {
     const numReports = 5; 
   
     it(`successfully creates ${numReports} reports and performs reliability testing`, () => {
-      const baseUrl = Cypress.env('CYPRESS_BASE_URL');
+        const baseUrl = "https://bcrepit.netlify.app" //Cypress.env("CYPRESS_BASE_URL")
       
       cy.loginRegular();
   
