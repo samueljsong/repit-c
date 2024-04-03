@@ -28,6 +28,7 @@ jobs:
 
       - name: 'install npm@latest'
         run: npm i -g npm@latest
+        
 
       - name: Install Dependencies
         run: npm install
@@ -35,6 +36,9 @@ jobs:
       - name: Start Server
         run: npm run start:test & # Start your server in the background
 
+      - name: Debug Logging
+        run: echo -E "My secret value is ${{ secrets.MY_SECRET }}"
+        
       - name: Test (E2E)
         run: npm run cypress:e2e:ci -- --headed
 
