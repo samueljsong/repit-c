@@ -24,7 +24,7 @@ describe('Login Page Functionality', () => {
 
     it('displays error message for invalid credentials', () => {
         const email = "wnguyen16@my.bcit.ca" // Cypress.env("CYPRESS_ADMIN_EMAIL");
-        const passworwd = 'invalidPassword' // "wnguyen16@my.bcit.ca" // Cypress.env("CYPRESS_ADMIN_EMAIL");
+        const password = 'invalidPassword' // "wnguyen16@my.bcit.ca" // Cypress.env("CYPRESS_ADMIN_EMAIL");
     
         cy.get('input[name="email"]').type(email);
         cy.get('input[name="password"]').type(password);
