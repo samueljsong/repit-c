@@ -21,10 +21,7 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
-<<<<<<< HEAD
 (Unit + Integration)
-=======
->>>>>>> dev
 
   test:
     runs-on: ubuntu-latest
@@ -53,11 +50,4 @@ jobs:
           json: '{ "CYPRESS_BASE_URL": "${{ secrets.CYPRESS_BASE_URL }}", "CYPRESS_API_URL": "${{ secrets.VITE_API_ENDPOINT }}", "CYPRESS_REGULAR_EMAIL": "${{ secrets.CYPRESS_REGULAR_EMAIL }}", "CYPRESS_REGULAR_PASSWORD": "${{ secrets.CYPRESS_REGULAR_PASSWORD }}", "CYPRESS_ADMIN_EMAIL": "${{ secrets.CYPRESS_ADMIN_EMAIL }}", "CYPRESS_ADMIN_PASSWORD": "${{ secrets.CYPRESS_ADMIN_PASSWORD }}" }'
 
       - name: Test (E2E)
-<<<<<<< HEAD
         run: npm run cypress:test
-=======
-        run: npm run test:e2e:ci
-
-      - name: Test (Components)
-        run: npm run cypress:component
->>>>>>> dev
