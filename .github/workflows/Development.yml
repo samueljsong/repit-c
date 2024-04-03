@@ -25,12 +25,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}
-      CYPRESS_API_URL: ${{ secrets.CYPRESS_API_URL }}
-      CYPRESS_REGULAR_EMAIL: ${{ secrets.CYPRESS_REGULAR_EMAIL }}
-      CYPRESS_REGULAR_PASSWORD: ${{ secrets.CYPRESS_REGULAR_PASSWORD }}
-      CYPRESS_ADMIN_EMAIL: ${{ secrets.CYPRESS_ADMIN_EMAIL }}
-      CYPRESS_ADMIN_PASSWORD: ${{ secrets.CYPRESS_ADMIN_PASSWORD }}
       NODE_ENV: ${{ secrets.NODE_ENV }}
       VITE_API_ENDPOINT: ${{ secrets.VITE_API_ENDPOINT }}
 
