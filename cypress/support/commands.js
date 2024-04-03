@@ -23,44 +23,41 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-const base_url = Cypress.env("CYPRESS_BASE_URL")
-const api_url = Cypress.env("CYPRESS_API_URL")
+const base_url = Cypress.env('CYPRESS_BASE_URL');
+const admin_email = Cypress.env('CYPRESS_ADMIN_EMAIL');
+const admin_password = Cypress.env('CYPRESS_ADMIN_PASSWORD');
 
-const regular_email = Cypress.env("CYPRESS_REGULAR_EMAIL");
-const regular_password = Cypress.env("CYPRESS_REGULAR_PASSWORD");
+const api_url = Cypress.env('CYPRESS_API_URL');
 
-const admin_email = Cypress.env("CYPRESS_ADMIN_EMAIL");
-const admin_password = Cypress.env("CYPRESS_ADMIN_PASSWORD");
+const regular_email = Cypress.env('CYPRESS_REGULAR_EMAIL');
+const regular_password = Cypress.env('CYPRESS_REGULAR_PASSWORD');
 
 Cypress.Commands.add('loginAdmin', () => {
+  cy.visit(base_url + '/login');
 
-    cy.visit(base_url + '/login');
+  cy.get('input[name="email"]').type(admin_email);
+  cy.get('input[name="password"]').type(admin_password);
 
-    cy.get('input[name="email"]').type(admin_email);
-    cy.get('input[name="password"]').type(admin_password);
+  cy.get('button.lp-button').click();
 
-    cy.get('button.lp-button').click();
+  cy.url().should('eq', base_url + '/');
 
-    cy.url().should('eq', base_url + '/');
+  cy.request(api_url + '/auth/me').then((response) => {
+    expect(response.status).to.eq(200);
+  });
+});
 
-    cy.request(api_url + '/api/auth/me').then((response) => {
-        expect(response.status).to.eq(200);
-    });
-  })
+Cypress.Commands.add('loginRegular', () => {
+  cy.visit(base_url + '/login');
 
+  cy.get('input[name="email"]').type(regular_email);
+  cy.get('input[name="password"]').type(regular_password);
 
-  Cypress.Commands.add('loginRegular', () => {
+  cy.get('button.lp-button').click();
 
-    cy.visit(base_url + '/login');
+  cy.url().should('eq', base_url + '/');
 
-    cy.get('input[name="email"]').type(regular_email);
-    cy.get('input[name="password"]').type(regular_password);
-
-    cy.get('button.lp-button').click();
-
-    cy.url().should('eq', base_url + '/');
-
-    cy.request(api_url + '/api/auth/me').then((response) => {
-        expect(response.status).to.eq(200);
-    });
-  })
+  cy.request(api_url + '/auth/me').then((response) => {
+    expect(response.status).to.eq(200);
+  });
+});

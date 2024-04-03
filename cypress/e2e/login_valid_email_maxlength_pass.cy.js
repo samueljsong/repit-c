@@ -1,12 +1,12 @@
 describe('Login Page', () => {
-    const base_url = Cypress.env("CYPRESS_BASE_URL");
+    const base_url = Cypress.env("CYPRESS_BASE_URL")
+    const email = Cypress.env("CYPRESS_ADMIN_EMAIL");
 
     beforeEach(() => {
         cy.visit(base_url + '/login');
     });
 
     it('logs in with valid email and password of maximum length', () => {
-        const email = Cypress.env("CYPRESS_ADMIN_EMAIL");
 
         const maxLengthPassword = 'a'.repeat(50);
 

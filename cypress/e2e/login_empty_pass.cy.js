@@ -1,5 +1,5 @@
 describe('Login Page', () => {
-    const base_url = Cypress.env("CYPRESS_BASE_URL");
+    const base_url = Cypress.env("CYPRESS_BASE_URL")
     const email = Cypress.env("CYPRESS_ADMIN_EMAIL");
 
     beforeEach(() => {

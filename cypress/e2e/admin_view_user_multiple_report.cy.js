@@ -1,6 +1,6 @@
 describe('Viewing admin dashboard', () => {
   it('successfully visits admin dashboard and views all reports', () => {
-    const base_url = Cypress.env('CYPRESS_BASE_URL');
+    const base_url = Cypress.env("CYPRESS_BASE_URL")
 
     cy.loginAdmin();
 

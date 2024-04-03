@@ -1,5 +1,6 @@
 describe('Regular User redirecting to Create and View pages', () => {
     const base_url = Cypress.env("CYPRESS_BASE_URL")
+
     
     beforeEach(() => {
         cy.loginRegular();
