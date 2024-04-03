@@ -1,5 +1,5 @@
 describe('Login Page Functionality', () => {
-    const base_url = "https://bcrepit.netlify.app" //Cypress.env("CYPRESS_BASE_URL")
+    const base_url = Cypress.env("CYPRESS_BASE_URL")
 
     beforeEach(() => {
         cy.visit(base_url + '/login');

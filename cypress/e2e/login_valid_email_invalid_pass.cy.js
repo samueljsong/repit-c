@@ -1,6 +1,6 @@
 describe('Login Page valid email invalid pass', () => {
-    const base_url = "https://bcrepit.netlify.app" //Cypress.env("CYPRESS_BASE_URL")
-    const email = "wnguyen16@my.bcit.ca" // Cypress.env("CYPRESS_ADMIN_EMAIL");
+    const base_url = Cypress.env("CYPRESS_BASE_URL")
+    const email = Cypress.env("CYPRESS_ADMIN_EMAIL");
 
     it('fails to log in the admin user', () => {
         cy.visit(base_url + '/login');

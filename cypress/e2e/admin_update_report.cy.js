@@ -1,6 +1,6 @@
 describe('An admin updates a report status', () => {
   const statusCounter = 1; 
-  const baseUrl = "https://bcrepit.netlify.app" //Cypress.env("CYPRESS_BASE_URL")
+  const baseUrl = Cypress.env("CYPRESS_BASE_URL")
 
   it(`successfully updates reports performs reliability testing`, () => {
     cy.loginAdmin();

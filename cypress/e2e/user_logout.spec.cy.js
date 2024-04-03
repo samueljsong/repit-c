@@ -1,5 +1,5 @@
 describe('Logging User Out', () => {
-    const base_url = "https://bcrepit.netlify.app" //Cypress.env("CYPRESS_BASE_URL")
+    const base_url = Cypress.env("CYPRESS_BASE_URL")
   
     it('successfully logs out the user', () => {
       cy.loginRegular();

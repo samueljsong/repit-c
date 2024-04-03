@@ -1,5 +1,5 @@
 describe('Regular User redirecting to Create and View pages', () => {
-    const base_url = "https://bcrepit.netlify.app" //Cypress.env("CYPRESS_BASE_URL")
+    const base_url = Cypress.env("CYPRESS_BASE_URL")
 
     
     beforeEach(() => {

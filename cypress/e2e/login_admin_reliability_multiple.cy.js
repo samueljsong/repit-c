@@ -1,5 +1,5 @@
 describe('Login student', () => {
-    const base_url = "https://bcrepit.netlify.app" //Cypress.env("CYPRESS_BASE_URL")
+    const base_url = Cypress.env("CYPRESS_BASE_URL")
     const numIterations = 10;
   
     it('successfully logs in the regular user and monitors memory', () => {

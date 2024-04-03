@@ -1,6 +1,6 @@
 describe('Login Page', () => {
     // Create a before each to redirect to visit base_url, unauthenticated should redirect back
-    const base_url = "https://bcrepit.netlify.app" //Cypress.env("CYPRESS_BASE_URL")
+    const base_url = Cypress.env("CYPRESS_BASE_URL")
 
     it('successfull routes to login page', () => {
         cy.visit(base_url + '/login');
