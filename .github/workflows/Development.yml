@@ -5,24 +5,6 @@ on:
     branches: dev
 
 jobs:
-  cypress:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20.10.0
-
-      - name: 'install npm@latest'
-        run: npm i -g npm@latest
-
-      - name: Install Dependencies
-        run: npm install
-(Unit + Integration)
-
   test:
     runs-on: ubuntu-latest
     env:
@@ -50,4 +32,7 @@ jobs:
           json: '{ "CYPRESS_BASE_URL": "${{ secrets.CYPRESS_BASE_URL }}", "CYPRESS_API_URL": "${{ secrets.VITE_API_ENDPOINT }}", "CYPRESS_REGULAR_EMAIL": "${{ secrets.CYPRESS_REGULAR_EMAIL }}", "CYPRESS_REGULAR_PASSWORD": "${{ secrets.CYPRESS_REGULAR_PASSWORD }}", "CYPRESS_ADMIN_EMAIL": "${{ secrets.CYPRESS_ADMIN_EMAIL }}", "CYPRESS_ADMIN_PASSWORD": "${{ secrets.CYPRESS_ADMIN_PASSWORD }}" }'
 
       - name: Test (E2E)
-        run: npm run cypress:test
+        run: npm run cypress:e2e:ci
+
+      - name: Test (Components)
+        run: npm run cypress:component
