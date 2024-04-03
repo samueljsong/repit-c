@@ -26,8 +26,6 @@ jobs:
         with:
           node-version: 21.6.0
 
-      - name: Echo Secret
-        run: echo "BASE URL ${{ secrets.CYPRESS_BASE_URL }}"
       - name: 'install npm@latest'
         run: npm i -g npm@latest
 

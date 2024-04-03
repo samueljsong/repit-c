@@ -7,6 +7,10 @@ describe('Login Page', () => {
       cy.url().should('include', '/login')
       const email = Cypress.env("CYPRESS_ADMIN_EMAIL");
       const password = Cypress.env("CYPRESS_ADMIN_PASSWORD")
+
+      cy.url().then(url => {
+        console.log('Visited URL:', url);
+      });
   
       cy.get('input[name="email"]').type(email);
       cy.get('input[name="password"]').type(password);
