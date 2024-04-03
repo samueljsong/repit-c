@@ -37,7 +37,7 @@ jobs:
         run: npm run start:test & # Start your server in the background
 
       - name: Debug Logging
-        run: echo -E "My secret value is ${{ secrets.MY_SECRET }}"
+        run: echo -E ${{ secrets.CYPRESS_BASE_URL }}
         
       - name: Test (E2E)
         run: npm run cypress:e2e:ci -- --headed
