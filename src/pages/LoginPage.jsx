@@ -115,9 +115,9 @@ function LoginPage() {
           transition={{ duration: '0.5', delay: 0.6 }}
         >
           Forgot your
-          <a href='/'>BCIT email</a>
+          <a href='/'> BCIT email </a> 
           or
-          <a href='/'>password?</a>
+          <a href='/'> password?</a> 
         </motion.div>
       </div>
     </div>
