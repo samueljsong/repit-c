@@ -63,7 +63,10 @@
 .description {
     margin-top: 5vh;
     font-size: 10px;
-    max-width: 200px;
+    max-width: 150px;
+    overflow: auto;
+    word-wrap: break-word; 
+    white-space: normal;
 }
 
 .report-image {
@@ -117,7 +120,8 @@
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     position: relative;
-    margin: 10px 10px 10px 10px;
+    margin: 10px;
+    width: 80%;
 }
 
 .popup-description-content {
@@ -127,6 +131,8 @@
 
 .popup-description {
     text-align: center;
+    word-wrap: break-word;
+    white-space: normal;
 }
 
 .close {

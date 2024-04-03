@@ -23,7 +23,8 @@ export default function ReportsComponent({ report, winstonImage }) {
   };
 
   const { location_tag_id, date_submitted, title, description, status_id, report_image } = report;
-  const [showDescription, setShowDescription] = useState(false);
+  const [showDescriptionPopup, setShowDescriptionPopup] = useState(false);
+  const [showImagePopup, setShowImagePopup] = useState(false);
   const [locationTag, setLocationTag] = useState(null);
 
   useEffect(() => {
@@ -40,8 +41,12 @@ export default function ReportsComponent({ report, winstonImage }) {
     fetchLocationTag();
   }, [location_tag_id]);
 
-  const toggleDescription = () => {
-    setShowDescription(!showDescription);
+  const toggleDescriptionPopup = () => {
+    setShowDescriptionPopup(!showDescriptionPopup);
+  };
+
+  const toggleImagePopup = () => {
+    setShowImagePopup(!showImagePopup);
   };
 
   const getStatusClass = () => {
@@ -76,10 +81,10 @@ export default function ReportsComponent({ report, winstonImage }) {
       </div>
       <div className='report-bottom'>
         <div className='report-bottom-left'>
-          <p className='report-title'>{title}</p>
-          <p className='description' onClick={toggleDescription}>
-            {description.length > 100 ? `${description.slice(0, 100)}...` : description}
-          </p>
+          <p className='report-title'>{title.length > 15 ? `${title.slice(0, 15)}...` : title}</p>
+          <div className='description' onClick={toggleDescriptionPopup}>
+            <span className="description-text">{description.length > 128 ? `${description.slice(0, 128)}...` : description}</span>
+          </div>
         </div>
         <div className='report-bottom-right'>
           <div className='report-bottom-right-top'>
@@ -90,20 +95,32 @@ export default function ReportsComponent({ report, winstonImage }) {
             <div className={`status-dot ${getStatusClass()}`} />
           </div>
           {report_image && report_image[0] && report_image[0].image ? (
-            <img className='report-image' src={report_image[0].image.cloudinary_id} alt='Report Image' />
+            <img className='report-image' src={report_image[0].image.cloudinary_id} alt='Report Image' onClick={toggleImagePopup} />
           ) : (
-            <img className='report-image' src={winstonImage} alt='Winston Image' />
+            <img className='report-image' src={winstonImage} alt='Winston Image' onClick={toggleImagePopup} />
           )}
         </div>
       </div>
-      {showDescription && (
+      {showDescriptionPopup && (
         <div className='popup'>
           <div className='popup-content'>
-            <div className='close' onClick={toggleDescription}>
+            <div className='close' onClick={toggleDescriptionPopup}>
               &times;
             </div>
             <div className='popup-description-content'>
               <p className='popup-description'>{description}</p>
+            </div>
+          </div>
+        </div>
+      )}
+      {showImagePopup && (
+        <div className='popup'>
+          <div className='popup-content'>
+            <div className='close' onClick={toggleImagePopup}>
+              &times;
+            </div>
+            <div className='popup-description-content'>
+              <img className='popup-image' src={report_image && report_image[0] && report_image[0].image ? report_image[0].image.cloudinary_id : winstonImage} alt='Report Image' />
             </div>
           </div>
         </div>
