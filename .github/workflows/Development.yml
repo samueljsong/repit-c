@@ -49,43 +49,17 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Check if secrets are empty
-        run: |
-          if [[ -n "${{ secrets.CYPRESS_BASE_URL }}" ]]; then
-            echo "BASE URL is not empty"
-          else
-            echo "BASE URL is empty"
-          fi
+      - name: Create cypress env file
+        uses: jsdaniell/create-json@v1.2.3
+        with:
+          name: cypress.env.json
+          json: '{ "CYPRESS_BASE_URL": "${{ secrets.CYPRESS_BASE_URL }}", "CYPRESS_API_URL": "${{ secrets.CYPRESS_API_URL }}", "CYPRESS_REGULAR_EMAIL": "${{ secrets.CYPRESS_REGULAR_EMAIL }}", "CYPRESS_REGULAR_PASSWORD": "${{ secrets.CYPRESS_REGULAR_PASSWORD }}", "CYPRESS_ADMIN_EMAIL": "${{ secrets.CYPRESS_ADMIN_EMAIL }}", "CYPRESS_ADMIN_PASSWORD": "${{ secrets.CYPRESS_ADMIN_PASSWORD }}" }'
 
-          if [[ -n "${{ secrets.CYPRESS_BASE_URL }}" ]]; then
-            echo "API URL is not empty"
-          else
-            echo "API URL is empty"
-          fi
+      - name: Check cypress env
+        run: cat cypress.env.json
 
       - name: Test (E2E)
-        uses: cypress-io/github-action@v6
-        with:
-          browser: chrome
-          install: false
-        env:
-          CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}
-          CYPRESS_API_URL: ${{ secrets.CYPRESS_API_URL }}
-          CYPRESS_REGULAR_EMAIL: ${{ secrets.CYPRESS_REGULAR_EMAIL }}
-          CYPRESS_REGULAR_PASSWORD: ${{ secrets.CYPRESS_REGULAR_PASSWORD }}
-          CYPRESS_ADMIN_EMAIL: ${{ secrets.CYPRESS_ADMIN_EMAIL }}
-          CYPRESS_ADMIN_PASSWORD: ${{ secrets.CYPRESS_ADMIN_PASSWORD }}
+        run: npm run cypress:e2e:ci
 
       - name: Test (Components)
-        uses: cypress-io/github-action@v6
-        with:
-          browser: chrome
-          install: false
-          component: true
-        env:
-          CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}
-          CYPRESS_API_URL: ${{ secrets.CYPRESS_API_URL }}
-          CYPRESS_REGULAR_EMAIL: ${{ secrets.CYPRESS_REGULAR_EMAIL }}
-          CYPRESS_REGULAR_PASSWORD: ${{ secrets.CYPRESS_REGULAR_PASSWORD }}
-          CYPRESS_ADMIN_EMAIL: ${{ secrets.CYPRESS_ADMIN_EMAIL }}
-          CYPRESS_ADMIN_PASSWORD: ${{ secrets.CYPRESS_ADMIN_PASSWORD }}
+        run: npm run cypress:component
