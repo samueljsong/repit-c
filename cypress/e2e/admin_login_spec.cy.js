@@ -8,9 +8,11 @@ describe('Login Page', () => {
       });
 
     it('successfully logs in the admin user', () => {
-      const base_url = Cypress.env("CYPRESS_BASE_URL")
+      const base_url = Cypress.env("BASE_URL")
       cy.visit(base_url + '/login');
       cy.url().should('eq', base_url + '/login')
+
+
       const email = Cypress.env("CYPRESS_ADMIN_EMAIL");
       const password = Cypress.env("CYPRESS_ADMIN_PASSWORD")
   
