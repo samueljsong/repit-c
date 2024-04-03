@@ -99,3 +99,95 @@ a{
         font-size: 0.8rem;
     }
 }
+
+@media only screen and (min-width: 601px){
+
+    .lp-general-container{
+        display: grid;
+        height: 100vh;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        background-color: #043c6c;
+        color: white;
+    }
+
+    .lp-container{
+        display: flex;
+        flex-direction: column;
+        width: 310px;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    .lp-bcit-title{
+        font-size: 3rem;
+        letter-spacing: 0.2rem;
+        text-align: center;
+    }
+
+    .lp-title{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .lp-repit-title{
+        display: grid;
+        letter-spacing: 1.0rem;
+        text-align: center;
+    }
+
+    .lp-email, 
+    .lp-password{
+        display: flex;
+        width: 100%;
+        height: 2.5rem;
+        border-bottom: solid 1px white;
+    }
+
+    .lp-email-container, 
+    .lp-password-container{
+        height: 100%;
+        width: 3rem;
+        border-right: solid 1px white;
+        display: grid;
+        place-items: center;
+    }
+
+    .lp-email-icon,
+    .lp-password-icon{
+        width: 1.5rem;
+    }
+    
+    .lp-input{
+        background: transparent;
+        border: none;
+        margin-left: 1rem;
+        width: 100%;
+        height: 100%;
+        color: white;
+    }
+
+    .lp-input:focus{
+        outline: none;
+    }
+
+    .lp-button{
+        height: 3rem;
+        border-radius: 10px;
+        border: none;
+        width: 100%;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        cursor: pointer;
+        background-color: white;
+        color: #043c6c;
+        font-weight: bold;
+    }
+
+    .lp-forgot{
+        font-size: 0.8rem;
+    }
+}
