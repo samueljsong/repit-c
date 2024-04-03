@@ -8,7 +8,7 @@ jobs:
   cypress:
     runs-on: ubuntu-latest
     env:
-      CYPRESS_BASE_URL: http://localhost:3000 # Assuming your server runs on port 3000
+      CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }} # Assuming your server runs on port 3000
       CYPRESS_API_URL: ${{ secrets.CYPRESS_API_URL }}
       CYPRESS_REGULAR_EMAIL: ${{ secrets.CYPRESS_REGULAR_EMAIL }}
       CYPRESS_REGULAR_PASSWORD: ${{ secrets.CYPRESS_REGULAR_PASSWORD }}
