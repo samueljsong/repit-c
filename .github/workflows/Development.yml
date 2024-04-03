@@ -54,6 +54,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           browser: chrome
+          install: false
           wait-on: ${{ secrets.CYPRESS_BASE_URL }}, ${{ secrets.CYPRESS_API_URL }}
         env:
           CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}
