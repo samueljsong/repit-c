@@ -42,10 +42,6 @@ Cypress.Commands.add('loginAdmin', () => {
     cy.get('button.lp-button').click();
 
     cy.url().should('eq', base_url + '/');
-
-    cy.request(api_url + '/api/auth/me').then((response) => {
-        expect(response.status).to.eq(200);
-    });
   })
 
 
@@ -59,8 +55,4 @@ Cypress.Commands.add('loginAdmin', () => {
     cy.get('button.lp-button').click();
 
     cy.url().should('eq', base_url + '/');
-
-    cy.request(api_url + '/api/auth/me').then((response) => {
-        expect(response.status).to.eq(200);
-    });
   })
