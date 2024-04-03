@@ -35,10 +35,8 @@ jobs:
       - name: Start Server
         run: npm run start:test & # Start your server in the background
 
-      - name: Test (Components)
-        run: npm run cypress:component
-
-    
-
       - name: Test (E2E)
         run: npm run cypress:e2e:ci -- --headed
+
+      - name: Test (Components)
+        run: npm run cypress:component

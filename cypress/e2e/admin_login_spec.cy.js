@@ -1,16 +1,14 @@
 describe('Login Page', () => {
-    const base_url = Cypress.env("CYPRESS_BASE_URL")
     // Create a before each to redirect to visit base_url, unauthenticated should redirect back
     it('successfull routes to login page', () => {
+        const base_url = Cypress.env("CYPRESS_BASE_URL")
         cy.visit(base_url + '/login');
-
-        console.log("THIS IS THE URL RAHHHHHHH -=============================================")
-        console.log(cy.url())
 
         cy.url().should('eq', base_url + '/login')
       });
 
     it('successfully logs in the admin user', () => {
+      const base_url = Cypress.env("CYPRESS_BASE_URL")
       cy.visit(base_url + '/login');
       cy.url().should('eq', base_url + '/login')
       const email = Cypress.env("CYPRESS_ADMIN_EMAIL");
