@@ -47,7 +47,7 @@ jobs:
         run: npm i -g npm@latest
 
       - name: Install Dependencies
-        run: npm
+        run: npm install
 
       - name: Check if secrets are empty
         run: |
