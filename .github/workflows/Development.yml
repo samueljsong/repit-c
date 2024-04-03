@@ -41,4 +41,4 @@ jobs:
     
 
       - name: Test (E2E)
-        run: npm run cypress:e2e:ci
+        run: npm run cypress:e2e:ci -- --headed
