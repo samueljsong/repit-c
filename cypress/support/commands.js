@@ -23,14 +23,15 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-const base_url = Cypress.env("CYPRESS_BASE_URL")
-const api_url = Cypress.env("CYPRESS_API_URL")
+const base_url = "https://bcrepit.netlify.app" //Cypress.env("CYPRESS_BASE_URL")
+const admin_email = "wnguyen16@my.bcit.ca" // Cypress.env("CYPRESS_ADMIN_EMAIL");
+const admin_password = "1234" //Cypress.env("CYPRESS_ADMIN_PASSWORD")
 
-const regular_email = Cypress.env("CYPRESS_REGULAR_EMAIL");
-const regular_password = Cypress.env("CYPRESS_REGULAR_PASSWORD");
+const api_url = "https://repit-server.onrender.com" // Cypress.env("CYPRESS_API_URL")
 
-const admin_email = Cypress.env("CYPRESS_ADMIN_EMAIL");
-const admin_password = Cypress.env("CYPRESS_ADMIN_PASSWORD");
+const regular_email = "user@my.bcit.ca" //Cypress.env("CYPRESS_REGULAR_EMAIL");
+const regular_password = "asd"  //Cypress.env("CYPRESS_REGULAR_PASSWORD");
+
 
 Cypress.Commands.add('loginAdmin', () => {
 
