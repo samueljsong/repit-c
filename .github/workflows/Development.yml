@@ -8,8 +8,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      NODE_ENV: ${{ secrets.NODE_ENV }}
-      VITE_API_ENDPOINT: https://repit-server.onrender.com/api
+      VITE_API_ENDPOINT: ${{ secrets.VITE_API_ENDPOINT }}
 
     steps:
       - name: Checkout
@@ -30,7 +29,7 @@ jobs:
         uses: jsdaniell/create-json@v1.2.3
         with:
           name: cypress.env.json
-          json: '{ "CYPRESS_BASE_URL": "${{ secrets.CYPRESS_BASE_URL }}", "CYPRESS_API_URL": "${{ secrets.CYPRESS_API_URL }}", "CYPRESS_REGULAR_EMAIL": "${{ secrets.CYPRESS_REGULAR_EMAIL }}", "CYPRESS_REGULAR_PASSWORD": "${{ secrets.CYPRESS_REGULAR_PASSWORD }}", "CYPRESS_ADMIN_EMAIL": "${{ secrets.CYPRESS_ADMIN_EMAIL }}", "CYPRESS_ADMIN_PASSWORD": "${{ secrets.CYPRESS_ADMIN_PASSWORD }}" }'
+          json: '{ "CYPRESS_BASE_URL": "${{ secrets.CYPRESS_BASE_URL }}", "CYPRESS_API_URL": "${{ secrets.VITE_API_ENDPOINT }}", "CYPRESS_REGULAR_EMAIL": "${{ secrets.CYPRESS_REGULAR_EMAIL }}", "CYPRESS_REGULAR_PASSWORD": "${{ secrets.CYPRESS_REGULAR_PASSWORD }}", "CYPRESS_ADMIN_EMAIL": "${{ secrets.CYPRESS_ADMIN_EMAIL }}", "CYPRESS_ADMIN_PASSWORD": "${{ secrets.CYPRESS_ADMIN_PASSWORD }}" }'
 
       - name: Check cypress env
         run: cat cypress.env.json
