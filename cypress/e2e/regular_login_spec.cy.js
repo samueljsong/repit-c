@@ -1,7 +1,7 @@
 describe('Login student', () => {
     const base_url = Cypress.env("CYPRESS_BASE_URL")
-    const email = Cypress.env("CYPRESS_ADMIN_EMAIL");
-    const password = Cypress.env("CYPRESS_ADMIN_PASSWORD")
+    const email = Cypress.env("CYPRESS_REGULAR_EMAIL");
+    const password = Cypress.env("CYPRESS_REGULAR_PASSWORD")
 
   it('successfully logs in the regular user', () => {
     cy.visit(base_url + '/login');
