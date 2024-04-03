@@ -51,16 +51,16 @@ jobs:
 
       - name: Check if secrets are empty
         run: |
-          if [ -z "${{ secrets.CYPRESS_BASE_URL }}" ]; then
-            echo "BASE URL does not exist"
+          if [[ -n "${{ secrets.CYPRESS_BASE_URL }}" ]]; then
+            echo "BASE URL is not empty"
           else
-            echo "BASE URL exists"
+            echo "BASE URL is empty"
           fi
 
-          if [ -z "${{ secrets.CYPRESS_API_URL }}" ]; then
-            echo "API URL does not exist"
+          if [[ -n "${{ secrets.CYPRESS_BASE_URL }}" ]]; then
+            echo "API URL is not empty"
           else
-            echo "API URL exists"
+            echo "API URL is empty"
           fi
 
       - name: Test (E2E)
@@ -68,7 +68,6 @@ jobs:
         with:
           browser: chrome
           install: false
-          wait-on: ${{ secrets.CYPRESS_BASE_URL }}, ${{ secrets.CYPRESS_API_URL }}
         env:
           CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}
           CYPRESS_API_URL: ${{ secrets.CYPRESS_API_URL }}
@@ -83,7 +82,6 @@ jobs:
           browser: chrome
           install: false
           component: true
-          wait-on: ${{ secrets.CYPRESS_BASE_URL }}, ${{ secrets.CYPRESS_API_URL }}
         env:
           CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}
           CYPRESS_API_URL: ${{ secrets.CYPRESS_API_URL }}
