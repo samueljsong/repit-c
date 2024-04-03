@@ -3,6 +3,10 @@ describe('Login Page', () => {
     // Create a before each to redirect to visit base_url, unauthenticated should redirect back
     it('successfull routes to login page', () => {
         cy.visit(base_url + '/login');
+
+        console.log("THIS IS THE URL RAHHHHHHH -=============================================")
+        console.log(cy.url())
+
         cy.url().should('eq', base_url + '/login')
       });
 
