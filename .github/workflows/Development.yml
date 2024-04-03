@@ -35,12 +35,9 @@ jobs:
 
       - name: Start Server
         run: npm run start:test & # Start your server in the background
-
-      - name: Debug Logging
-        run: echo -E ${{ secrets.CYPRESS_BASE_URL }}
         
       - name: Test (E2E)
-        run: npm run cypress:e2e:ci -- --headed
+        run: npm run cypress:e2e:ci
 
       - name: Test (Components)
         run: npm run cypress:component
