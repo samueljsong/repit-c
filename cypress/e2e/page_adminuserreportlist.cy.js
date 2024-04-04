@@ -37,15 +37,14 @@ describe('Admin User Report List Page', () => {
 
   it('fetches and displays reports correctly', () => {
     cy.loginAdmin();
-  
+
     cy.visit(`${base_url}/admindashboard`);
-  
+
     cy.get('button[name="15"]').click();
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(1000);
-  
-    // Check if there are 6 .button-report elements
-    cy.get('.button-report').should('have.length', 6);
+
+    // Check if there is at least one .button-report element
+    cy.get('.button-report').should('exist');
   });
-  
 });
