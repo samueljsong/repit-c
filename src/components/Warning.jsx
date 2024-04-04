@@ -41,7 +41,7 @@ export const Warning = () => {
       <div className='t1-instructions'>
         <p>Do not take pictures in the washrooms</p>
         <p>Do not take pictures in the changerooms</p>
-        <p>Please respect everyone&aposs privacy.</p>
+        <p>Please respect everyone&apos;s privacy.</p>
       </div>
       <motion.button
         name='complete'
