@@ -3,45 +3,42 @@ describe('An admin updates reports with different status values', () => {
   let statusCounter = 1;
 
   it(`successfully updates reports ${numIterations} times with different status values and performs reliability testing`, () => {
-      const baseUrl = Cypress.env("CYPRESS_BASE_URL");
+    const baseUrl = Cypress.env('CYPRESS_BASE_URL');
 
-      for (let i = 0; i < numIterations; i++) {
-        statusCounter = 1; 
-    
-        cy.loginAdmin();
-    
-        cy.visit(`${baseUrl}/AdminDashboard`);
-    
-        cy.get('button[name="19"]').click();
-        // eslint-disable-next-line cypress/no-unnecessary-waiting
-        cy.wait(1000);
-    
-        cy.get('.button-report').first().click({ force: true });
-    
-        cy.url().should('eq', `${baseUrl}/admin-user-report-card`);
-    
-        cy.get('select[name="status"]').select(`${statusCounter}`);
-        cy.get('button[name="submit"]').click();
-        // eslint-disable-next-line cypress/no-unnecessary-waiting
-        cy.wait(500);
-    
-        cy.get('.error-message').should('not.exist');
-    
-        const startTime = Date.now();
-    
-        cy.reload({ timeout: 10000 });
-        // eslint-disable-next-line cypress/no-unnecessary-waiting
-        cy.wait(500);
-    
-        cy.get('.button-report').first().click({ force: true });
-    
-        cy.get('select[name="status"]').should('have.value', `${statusCounter}`, { timeout: 10000 }).should('be.visible');
-    
-        const endTime = Date.now();
-        const executionTime = endTime - startTime;
-        cy.log(`Report update execution time for iteration ${i + 1}: ${executionTime} ms`);
-    
-        statusCounter = statusCounter < 4 ? statusCounter + 1 : 1;
-    }    
+    for (let i = 0; i < numIterations; i++) {
+      statusCounter = 1;
+
+      cy.loginAdmin();
+
+      cy.visit(`${baseUrl}/AdminDashboard`);
+
+      cy.get('button[name="19"]').click();
+      cy.wait(1000);
+
+      cy.get('.button-report').first().click({ force: true });
+
+      cy.url().should('eq', `${baseUrl}/admin-user-report-card`);
+
+      cy.get('select[name="status"]').select(`${statusCounter}`);
+      cy.get('button[name="submit"]').click();
+      cy.wait(500);
+
+      cy.get('.error-message').should('not.exist');
+
+      const startTime = Date.now();
+
+      cy.reload({ timeout: 10000 });
+      cy.wait(500);
+
+      cy.get('.button-report').first().click({ force: true });
+
+      cy.get('select[name="status"]').should('have.value', `${statusCounter}`, { timeout: 10000 }).should('be.visible');
+
+      const endTime = Date.now();
+      const executionTime = endTime - startTime;
+      cy.log(`Report update execution time for iteration ${i + 1}: ${executionTime} ms`);
+
+      statusCounter = statusCounter < 4 ? statusCounter + 1 : 1;
+    }
   });
 });
