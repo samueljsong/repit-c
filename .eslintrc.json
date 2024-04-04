@@ -3,7 +3,7 @@
         "browser": true,
         "es2021": true,
         "node": true,
-        "cypess": true
+        "cypess/globals": true
     },
     "extends": 
     [
