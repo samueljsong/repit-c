@@ -4,6 +4,7 @@
         "es2021": true,
         "node": true
     },
+    "plugins": ["cypress"],
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
@@ -13,5 +14,7 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "rules": {}
+    "rules": {
+      "cypress/no-unnecessary-waiting": "off"
+    }
 }

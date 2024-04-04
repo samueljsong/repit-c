@@ -1,5 +1,5 @@
 describe('Admin User Report List Page', () => {
-  const base_url = Cypress.env("CYPRESS_BASE_URL")
+  const base_url = Cypress.env('CYPRESS_BASE_URL');
 
   it('renders without crashing', () => {
     cy.loginAdmin();
@@ -13,8 +13,8 @@ describe('Admin User Report List Page', () => {
     cy.intercept('GET', `${base_url}/auth/me`, {
       statusCode: 200,
       body: {
-        "user_type": "user"
-      }
+        user_type: 'user',
+      },
     });
 
     cy.visit(`${base_url}/admin-user-report-list`);
@@ -27,8 +27,8 @@ describe('Admin User Report List Page', () => {
     cy.intercept('GET', `${base_url}/auth/me`, {
       statusCode: 200,
       body: {
-        "user_type": "admin"
-      }
+        user_type: 'admin',
+      },
     });
 
     cy.visit(`${base_url}/admin-user-report-list`);
@@ -41,7 +41,6 @@ describe('Admin User Report List Page', () => {
     cy.visit(`${base_url}/admindashboard`);
 
     cy.get('button[name="15"]').click();
-    // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(1000);
 
     // Check if there is at least one .button-report element
