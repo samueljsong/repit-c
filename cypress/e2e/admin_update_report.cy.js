@@ -9,7 +9,7 @@ describe('An admin updates a report status', () => {
 
     cy.get('button[name="15"]').click();
     // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(1000);
+    cy.wait(1000); 
 
     cy.get('.button-report').first().click({ force: true });
 
@@ -18,7 +18,7 @@ describe('An admin updates a report status', () => {
     cy.get('select[name="status"]').select(`${statusCounter}`);
     cy.get('button[name="submit"]').click();
     // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(1000);
+    cy.wait(500); 
 
     cy.get('.error-message').should('not.exist');
 
@@ -26,7 +26,7 @@ describe('An admin updates a report status', () => {
 
     cy.reload();
     // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(1000);
+    cy.wait(500);
 
     cy.get('.button-report').first().click({ force: true });
 

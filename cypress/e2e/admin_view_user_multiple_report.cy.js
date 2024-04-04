@@ -14,7 +14,7 @@ describe('Viewing admin dashboard', () => {
       for (let i = 0; i < buttonCount; i++) {
         cy.get('.button-report').eq(i).click({ force: true });
         // eslint-disable-next-line cypress/no-unnecessary-waiting
-        cy.wait(3000);
+        cy.wait(3000)
         cy.get('input[name="title-input"]').should('be.visible').should('not.have.value', '');
         cy.get('input[name="location-input"]').should('be.visible').should('not.have.value', '');
         cy.get('textarea[name="description-input"]').should('be.visible').should('not.have.value', '');
