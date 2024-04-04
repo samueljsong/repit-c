@@ -6,8 +6,8 @@ describe('Login student', () => {
       for (let i = 0; i < numIterations; i++) {
         cy.visit(base_url + '/login');
         cy.url().should('include', '/login');
-        const email = "wnguyen16@my.bcit.ca" // Cypress.env("CYPRESS_ADMIN_EMAIL");
-        const password = "1234" //Cypress.env("CYPRESS_ADMIN_PASSWORD")
+        const email = Cypress.env("CYPRESS_ADMIN_EMAIL");
+        const password = Cypress.env("CYPRESS_ADMIN_PASSWORD")
   
         cy.get('input[name="email"]').type(email);
         cy.get('input[name="password"]').type(password);
