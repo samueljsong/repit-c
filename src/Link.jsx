@@ -1,8 +1,17 @@
+import React from 'react';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const STATUS = {
   HOVERED: 'hovered',
   NORMAL: 'normal',
+};
+
+
+
+Link.propTypes = {
+  page: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default function Link({ page, children }) {

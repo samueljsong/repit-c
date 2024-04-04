@@ -6,7 +6,6 @@ describe('A user views reports multiple times', () => {
 
     for (let i = 0; i < numIterations; i++) {
       cy.loginRegular();
-      cy.wait(1000); 
 
       cy.visit(`${baseUrl}/view-reports`);
 

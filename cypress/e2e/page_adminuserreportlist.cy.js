@@ -41,7 +41,6 @@ describe('Admin User Report List Page', () => {
     cy.visit(`${base_url}/admindashboard`);
   
     cy.get('button[name="15"]').click();
-    cy.wait(1000);
   
     // Check if there are 6 .button-report elements
     cy.get('.button-report').should('have.length', 6);

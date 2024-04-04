@@ -10,7 +10,6 @@ describe('Admin User Report Page', () => {
         state: reportId
       });
 
-      cy.wait(1000); 
 
   
       cy.get('input[name="title-input"]').should('exist');
@@ -30,7 +29,6 @@ describe('Admin User Report Page', () => {
       cy.visit(`${baseUrl}/admin-user-report-card`, {
         state: reportId
       });
-      cy.wait(1000); 
 
   
       cy.url().should('eq', `${baseUrl}/login`);
@@ -44,7 +42,6 @@ describe('Admin User Report Page', () => {
           "user_type": "admin"
         }
       });
-      cy.wait(1000); 
 
   
       const reportId = '50';

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Tutorial1 } from '../../src/components/Tutorial1'
 import { Tutorial2 } from '../../src/components/Tutorial2'
 import { Tutorial3 } from '../../src/components/Tutorial3'

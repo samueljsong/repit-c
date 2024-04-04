@@ -6,7 +6,6 @@ describe('A user creates a report', () => {
         cy.visit(base_url + "/create")
 
         cy.get('button[name="submit"]').click();
-        cy.wait(500)
         cy.url().should('eq', base_url + '/create'); // a report has successfully been created.
     });
 })

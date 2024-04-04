@@ -15,7 +15,6 @@ describe('Login Page', () => {
         cy.get('button.lp-button').click();
 
         cy.url().should('eq', base_url + '/login');
-        cy.wait(500)
         cy.get('div.Toastify').children().should('have.length', 1);
     });
 });

@@ -1,6 +1,8 @@
+import React from 'react';
 //Styles
 import '../styles/Warning.css';
 import '../styles/Tutorial1.css';
+
 
 //Dependencties
 import { motion } from 'framer-motion';
@@ -21,8 +23,8 @@ export const Warning = () => {
 
   const onButtonClickHandler = () => {
     updateNewUser();
-    navigate('/')
-  }
+    navigate('/');
+  };
 
   return (
     <motion.div
@@ -39,7 +41,7 @@ export const Warning = () => {
       <div className='t1-instructions'>
         <p>Do not take pictures in the washrooms</p>
         <p>Do not take pictures in the changerooms</p>
-        <p>Please respect everyone's privacy.</p>
+        <p>Please respect everyone&aposs privacy.</p>
       </div>
       <motion.button
         name='complete'

@@ -1,3 +1,4 @@
+import React from 'react';
 //Script
 import '../styles/TutorialPage.css';
 

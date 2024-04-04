@@ -57,7 +57,7 @@ const useRequest = () => {
         return;
       }
       if (response.status === 403) {
-        throw e;
+        throw response;
       }
       if (response.status === 400) {
         await logOutRequest();
@@ -84,7 +84,7 @@ const useRequest = () => {
         return;
       }
       if (response.status === 403) {
-        throw e;
+        throw response;
       }
       if (response.status === 400) {
         await logOutRequest();
@@ -111,7 +111,7 @@ const useRequest = () => {
         return;
       }
       if (response.status === 403) {
-        throw e;
+        throw response;
       }
       if (response.status === 400) {
         await logOutRequest();
@@ -138,7 +138,7 @@ const useRequest = () => {
         return;
       }
       if (response.status === 403) {
-        throw e;
+        throw response;
       }
       if (response.status === 400) {
         await logOutRequest();

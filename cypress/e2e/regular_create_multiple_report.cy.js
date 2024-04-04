@@ -27,7 +27,6 @@ describe('A user creates multiple reports', () => {
         const startTime = Date.now();
   
         cy.get('button[name="submit"]').click();
-        cy.wait(500); 
         cy.url().should('eq', `${baseUrl}/`);
         
         cy.get('div.Toastify').children().should('have.length', 1);

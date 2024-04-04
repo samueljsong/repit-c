@@ -3,11 +3,11 @@
         "browser": true,
         "es2021": true,
         "node": true
-        // "cypress": true // Enable Cypress environment
     },
     "extends": [
         "eslint:recommended",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "plugin:cypress/recommended"
     ],
     "parserOptions": {
         "ecmaVersion": "latest",

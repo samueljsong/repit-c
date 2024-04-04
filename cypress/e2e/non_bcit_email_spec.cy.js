@@ -6,7 +6,6 @@ describe('A user creates a report', () => {
         cy.get('input[name="password"]').type("1234");
 
         cy.get('button.lp-button').click();
-        cy.wait(500)
         cy.get('div.Toastify').children().should('have.length', 1);
     });
 })

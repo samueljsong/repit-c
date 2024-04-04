@@ -4,7 +4,6 @@ describe('A user creates a report', () => {
 
         
         cy.loginRegular()
-        cy.wait(500)
         cy.visit(base_url + "/view-reports")
 
         // Assumes at least 1 report created by the user

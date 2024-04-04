@@ -13,7 +13,6 @@ describe('A user creates a report', () => {
         cy.get('div[name="cloudinaryWidget"').should('exist'); // Check if the cloudinary widget exsits
 
         cy.get('button[name="submit"]').click();
-        cy.wait(500)
         cy.url().should('eq', base_url + '/'); // a report has successfully been created.
     });
 })

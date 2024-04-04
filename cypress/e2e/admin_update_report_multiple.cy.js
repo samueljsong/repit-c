@@ -13,7 +13,6 @@ describe('An admin updates reports with different status values', () => {
         cy.visit(`${baseUrl}/AdminDashboard`);
     
         cy.get('button[name="19"]').click();
-        cy.wait(1000);
     
         cy.get('.button-report').first().click({ force: true });
     
@@ -21,14 +20,12 @@ describe('An admin updates reports with different status values', () => {
     
         cy.get('select[name="status"]').select(`${statusCounter}`);
         cy.get('button[name="submit"]').click();
-        cy.wait(500);
     
         cy.get('.error-message').should('not.exist');
     
         const startTime = Date.now();
     
         cy.reload({ timeout: 10000 });
-        cy.wait(500);
     
         cy.get('.button-report').first().click({ force: true });
     
