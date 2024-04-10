@@ -14,7 +14,7 @@ export const AdminDashboardCard = function () {
       .then((data) => {
         setUsers(data);
       })
-      .catch((error) => console.error('Error fetching users:', error));
+      .catch((error) => console.error('Error fetching User:', error));
   }, []);
 
   const filteredUsers = users.filter((user) => user.email.toLowerCase().includes(searchTerm.toLowerCase()));
