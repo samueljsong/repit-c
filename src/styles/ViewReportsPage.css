@@ -76,3 +76,10 @@
 .History-div {
     display: block;
 }
+
+.no-content{
+  margin-top: 25vh;
+  font-size: 18px;
+  color: #555; 
+  text-align: center;
+}

@@ -90,7 +90,7 @@ export default function ViewReportsPage() {
             <div className='Active-div'>
               {/* <h2>Active Reports</h2> */}
               {activeReports.length === 0 ? (
-                <p>No active reports</p>
+                <p className='no-content'>No active reports</p>
               ) : (
                 <div name='report-list'>
                   {activeReports.map((report) => (
@@ -103,7 +103,7 @@ export default function ViewReportsPage() {
             <div className='History-div'>
               {/* <h2>Report History</h2> */}
               {historyReports.length === 0 ? (
-                <p>No report history</p>
+                <p className='no-content'>No report history</p>
               ) : (
                 <div>
                   {historyReports.map((report) => (
