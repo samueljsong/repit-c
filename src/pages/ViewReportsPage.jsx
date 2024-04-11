@@ -88,7 +88,6 @@ export default function ViewReportsPage() {
         <div className='main-content'>
           {activeTab === 'Active' ? (
             <div className='Active-div'>
-              {/* <h2>Active Reports</h2> */}
               {activeReports.length === 0 ? (
                 <p className='no-content'>No active reports</p>
               ) : (
@@ -101,7 +100,6 @@ export default function ViewReportsPage() {
             </div>
           ) : (
             <div className='History-div'>
-              {/* <h2>Report History</h2> */}
               {historyReports.length === 0 ? (
                 <p className='no-content'>No report history</p>
               ) : (

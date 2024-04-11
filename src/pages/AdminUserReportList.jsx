@@ -41,13 +41,18 @@ function AdminUserReportList() {
   const isDashboardPage = location.pathname.includes('/AdminDashboard');
 
   const [reports, setReports] = useState([]);
+  const [loading, setLoading] = useState(true); // State to track loading state
 
   useEffect(() => {
     getAdminUserReports(location.state)
       .then((response) => {
         setReports(response);
+        setLoading(false); // Set loading state to false when data is fetched
       })
-      .catch(() => console.log('Error fetching reports'));
+      .catch(() => {
+        console.log('Error fetching reports');
+        setLoading(false); // Set loading state to false on error
+      });
   }, []);
 
   const handleClick = (reportId) => {
@@ -62,18 +67,24 @@ function AdminUserReportList() {
         </h2>
         <div className='dashboard-list'>
           <div className="scrollable-list" style={{ maxHeight: isReportListPage ? 'calc(100vh - 200px)' : isDashboardPage ? 'calc(100vh - 250px)' : 'calc(100vh - 200px)' }}>
-            <ul className='user-list'>
-              {reports.map((report) => (
-                <button
-                  className='button-report max-w-md text-overflow-ellipsis whitespace-normal'
-                  key={report.report_id}
-                  type='button'
-                  onClick={() => handleClick(report.report_id)}
-                >
-                  {truncateTitle(report.title, 25)}
-                </button>
-              ))}
-            </ul>
+            {loading ? ( 
+              <p className='no-content'>Loading...</p>
+            ) : reports.length === 0 ? ( 
+              <p className='no-content'>No reported reports</p>
+            ) : (
+              <ul className='user-list'>
+                {reports.map((report) => (
+                  <button
+                    className='button-report max-w-md text-overflow-ellipsis whitespace-normal'
+                    key={report.report_id}
+                    type='button'
+                    onClick={() => handleClick(report.report_id)}
+                  >
+                    {truncateTitle(report.title, 25)}
+                  </button>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
       </div>
