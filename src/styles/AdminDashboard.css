@@ -8,7 +8,7 @@
 
 .dashboard-div {
   margin-top: 12vh;
-  height: 80%;
+  height: 85%;
   width: 80%;
   background-color: white; 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -22,7 +22,7 @@
 }
 
 .scrollable-list {
-  max-height: 100%; 
+  max-height: calc(100vh - 250px);
   overflow-y: auto;
 }
 

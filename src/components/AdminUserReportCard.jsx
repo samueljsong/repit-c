@@ -5,12 +5,13 @@ import { getLocationByIdAdmin, getAdminUserReport, updateReportStateAdmin } from
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const updateReportState = (reportId, state) => {
-  updateReportStateAdmin(reportId, state)
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => console.error('Error updating user report state:', error));
+const updateReportState = async (reportId, state) => {
+  try {
+    const response = await updateReportStateAdmin(reportId, state);
+    console.log(response);
+  } catch (error) {
+    console.error('Error updating user report state:', error);
+  }
 };
 
 export const AdminUserReportCard = (props) => {

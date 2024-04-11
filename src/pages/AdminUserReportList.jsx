@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css';
 
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate} from 'react-router-dom';
 import { me, getAdminUserReports } from '../api/Client';
 
 const useAdminOnly = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate();  
 
   useEffect(() => {
     me()
@@ -30,11 +30,15 @@ function truncateTitle(title, maxLength) {
   }
 }
 
+
+
 function AdminUserReportList() {
   useAdminOnly();
 
   const location = useLocation();
   const navigate = useNavigate();
+  const isReportListPage = location.pathname.includes('/admin-user-report-list');
+  const isDashboardPage = location.pathname.includes('/AdminDashboard');
 
   const [reports, setReports] = useState([]);
 
@@ -52,12 +56,12 @@ function AdminUserReportList() {
 
   return (
     <div name='page-container' className='h-screen w-full grid place-items-center bg-gray-200'>
-      <div className='dashboard-div mt-12vh bg-white shadow'>
+      <div className='dashboard-div bg-white shadow'>
         <h2 name='title' className='dashboard-title'>
           List of Reports
         </h2>
         <div className='dashboard-list'>
-          <div className='scrollable-list'>
+          <div className="scrollable-list" style={{ maxHeight: isReportListPage ? 'calc(100vh - 200px)' : isDashboardPage ? 'calc(100vh - 250px)' : 'calc(100vh - 200px)' }}>
             <ul className='user-list'>
               {reports.map((report) => (
                 <button
